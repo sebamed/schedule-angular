@@ -1,0 +1,39 @@
+.form {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    nb-card {
+        padding: 50px 0;
+        nb-card-body {
+            .title {
+                text-align: center;
+                h5 {
+                    color: #ccc;
+                    font-weight: 400;
+                    font-size: 15px;
+                    margin: 0;
+                }
+            }
+            form {
+                margin: 40px 0 10px 40px;
+                .form-control-group {
+                    padding: 10px 0;
+                }
+                .btn-submit {
+                    margin: 10px 0 0 0;
+                    width: 100%;
+                }
+            }
+
+            p {
+                text-align: center;
+                color: #b6bfc4;
+                cursor: pointer;
+
+                &:hover {
+                    color: #83898d;
+                }
+            } 
+        }
+    }
+}
