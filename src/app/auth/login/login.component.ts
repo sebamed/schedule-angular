@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'src/app/common/services/toast.service';
 
 @Component({
     selector: 'app-auth-login',
@@ -9,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
 
-    constructor() {
+    constructor(private _toast: ToastService) {
 
     }
 
     ngOnInit() { }
+
+    login() {
+        this._toast.addSuccessToast('Uspesno ste se ulogovali!');
+    }
 }

@@ -17,7 +17,7 @@
                                     fullwidth id="input-password" name="password" nbinput type="password"
                                     placeholder="Password" class="input-full-width input-md input-rectangle">
                             </div>
-                            <button nbButton status="success" class="btn-submit">Sign in</button>
+                            <button nbButton status="success" class="btn-submit" (click)="login()">Sign in</button>
                         </form>
                         <p [routerLink]="['/auth/register']">Don't have an account yet? Register now!</p>
                     </div>

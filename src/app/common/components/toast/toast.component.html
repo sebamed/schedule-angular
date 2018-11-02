@@ -1,0 +1,11 @@
+<div [@toastInOut] class="toast {{toast.color}}" *ngFor="let toast of toasts">
+    <div class="icon">
+        <i class="eva eva-{{toast.type}}"></i>
+    </div>
+    <div class="message">
+        {{toast.message}}
+    </div>
+    <div class="exit" (click)="exit()">
+        <i class="eva eva-close-circle-outline"></i>
+    </div>
+</div>

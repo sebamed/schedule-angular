@@ -1,0 +1,47 @@
+.toast {
+    background-color: rgba(0, 0, 0, 0.274);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 3px;
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    div {
+        display: inline-block;
+    }
+    .icon,
+    .exit {
+        text-align: center;
+        i {
+            vertical-align: middle;
+        }
+    }
+    .exit {
+        cursor: pointer;
+        &:hover {
+            i {
+                color: rgba(0, 0, 0, 0.363);
+            }
+        }
+    }
+    .icon {
+        padding: 0 10px 0 0;
+    }
+    .message {
+        padding: 0px 40px 0 0;
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    .toast {
+        .icon,
+        .exit {
+            display: none;
+        }
+        .message {
+            padding: 0;
+        }
+    }
+}
