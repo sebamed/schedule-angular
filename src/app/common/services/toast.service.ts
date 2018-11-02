@@ -2,6 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { IToast } from '../model/toast.model';
 import { Observable, Subscription, timer } from 'rxjs';
 import { ToastType } from '../model/enumeration/toast-type.enum';
+import { AppConstants } from '../constants/app.constants';
 
 @Injectable()
 export class ToastService {
@@ -47,7 +48,7 @@ export class ToastService {
         if (this.timerSub !== undefined) {
             this.timerSub.unsubscribe();
         }
-        this.timer = timer(3000);
+        this.timer = timer(AppConstants.TOAST_EXPIRE * 1000);
         this.timerSub = this.timer.subscribe(() => {
             this.toasts.pop();
             this.toastsEmitter.emit(this.toasts);

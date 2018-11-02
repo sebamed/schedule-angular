@@ -8,6 +8,8 @@ import { NbThemeModule } from '@nebular/theme';
 import { ToastService } from './common/services/toast.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthService } from './common/services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot()
   ],
   providers: [
-    ToastService
+    ToastService,
+    AuthService
   ],
   bootstrap: [
     AppComponent

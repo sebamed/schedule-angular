@@ -16,6 +16,13 @@
             }
             form {
                 margin: 40px 0 10px 0;
+                nb-alert {
+                    padding: 5px 0;
+                    margin: 0;
+                    font-size: 13px;
+                    background-color: transparent;
+                    color: #ff0000;
+                }
                 .form-control-group {
                     padding: 10px 0;
                 }
@@ -24,16 +31,14 @@
                     width: 100%;
                 }
             }
-
             p {
                 text-align: center;
                 color: #b6bfc4;
                 cursor: pointer;
-
                 &:hover {
                     color: #83898d;
                 }
-            } 
+            }
         }
     }
 }

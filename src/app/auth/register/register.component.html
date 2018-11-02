@@ -8,24 +8,40 @@
                             <h1>Sign up</h1>
                             <h5>Enter Your information here</h5>
                         </div>
-                        <form>
+                        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                             <div class="form-control-group"><label class="label" for="input-first-name">First name:</label><input
-                                    autofocus fullwidth id="input-first-name" name="firstName" nbinput type="text"
-                                    placeholder="First name" class="input-full-width input-md input-rectangle">
+                                    formControlName="firstName" autofocus fullwidth id="input-first-name" name="firstName"
+                                    nbinput type="text" placeholder="First name" class="input-full-width input-md input-rectangle">
+                                <nb-alert status="danger" *ngIf="submitted && form.firstName.errors" class="invalid-feedback">
+                                    <div *ngIf="form.firstName.errors.required">First name is required!</div>
+                                </nb-alert>
                             </div>
                             <div class="form-control-group"><label class="label" for="input-last-name">Last name:</label><input
-                                    fullwidth id="input-last-name" name="lastName" nbinput type="text" placeholder="Last name"
-                                    class="input-full-width input-md input-rectangle">
+                                    formControlName="lastName" autofocus fullwidth id="input-last-name" name="lastName"
+                                    nbinput type="text" placeholder="last name" class="input-full-width input-md input-rectangle">
+                                <nb-alert status="danger" *ngIf="submitted && form.lastName.errors" class="invalid-feedback">
+                                    <div *ngIf="form.lastName.errors.required">Last name is required!</div>
+                                </nb-alert>
                             </div>
                             <div class="form-control-group"><label class="label" for="input-email">Email address:</label><input
-                                    fullwidth id="input-email" name="email" nbinput type="email" placeholder="Email address"
-                                    class="input-full-width input-md input-rectangle">
+                                    formControlName="email" autofocus fullwidth id="input-email" name="email" nbinput
+                                    type="email" placeholder="Email address" class="input-full-width input-md input-rectangle">
+                                <nb-alert status="danger" *ngIf="submitted && form.email.errors" class="invalid-feedback">
+                                    <div *ngIf="form.email.errors.required">Email is required!</div>
+                                    <div *ngIf="form.email.errors.email">You must enter a valid email address!</div>
+                                </nb-alert>
+
                             </div>
                             <div class="form-control-group"><label class="label" for="input-password">Password:</label><input
-                                    autofocus fullwidth id="input-password" name="password" nbinput type="password"
-                                    placeholder="Password" class="input-full-width input-md input-rectangle">
-                            </div>
-                            <button nbButton status="success" class="btn-submit">Sign up</button>
+                                formControlName="password" fullwidth
+                                id="input-password" name="password" nbinput type="password" placeholder="Password"
+                                class="input-full-width input-md input-rectangle">
+                                <nb-alert status="danger" *ngIf="submitted && form.password.errors" class="invalid-feedback">
+                                    <div *ngIf="form.password.errors.required">Password can't be empty!</div>
+                                    <div *ngIf="form.password.errors.minlength">Password must be at least 6 characters long!</div>
+                                </nb-alert>
+                        </div>
+                            <button nbButton status="primary" class="btn-submit">Sign up</button>
                         </form>
                         <p [routerLink]="['/auth/login']">Already have an account? Login now!</p>
                     </div>

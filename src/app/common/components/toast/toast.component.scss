@@ -1,9 +1,9 @@
 .toast {
-    background-color: rgba(0, 0, 0, 0.274);
+    background-color: rgba(0, 0, 0, 0.4);
     color: #fff;
     padding: 12px 20px;
     border-radius: 3px;
-    position: absolute;
+    position: fixed;
     top: 15px;
     left: 50%;
     transform: translateX(-50%);

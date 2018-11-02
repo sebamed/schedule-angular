@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { NbLayoutModule, NbButtonModule, NbInputModule, NbCardModule } from '@nebular/theme';
+import { NbLayoutModule, NbButtonModule, NbInputModule, NbCardModule, NbAlertModule } from '@nebular/theme';
 
 
 @NgModule({
-    imports: [NbLayoutModule, NbButtonModule, NbInputModule, NbCardModule],
-    exports: [NbLayoutModule, NbButtonModule, NbInputModule, NbCardModule]
+    imports: [NbLayoutModule, NbButtonModule, NbInputModule, NbCardModule, NbAlertModule],
+    exports: [NbLayoutModule, NbButtonModule, NbInputModule, NbCardModule, NbAlertModule]
 })
 export class AuthNebularModule { }
