@@ -1,4 +1,5 @@
 import { IRole } from './role.model';
+import { ISubject } from './subject.model';
 
 export interface IUserInfo {
     id: number;
@@ -6,4 +7,5 @@ export interface IUserInfo {
     lastName: string;
     email: string;
     role: IRole;
+    skills: ISubject[];
 }

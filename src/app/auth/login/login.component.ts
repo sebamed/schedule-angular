@@ -57,6 +57,7 @@ export class LoginComponent implements OnInit {
         this._auth.login(this.loginDTO).subscribe((res: ILoginResponse) => {
             console.log(res);
         }, (error: IErrorResponse) => {
+            console.log(error);
             this._toast.addErrorToast(error.errorMessage);
         });
 

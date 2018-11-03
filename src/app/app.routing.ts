@@ -4,7 +4,8 @@ import { ToastComponent } from './common/components/toast/toast.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  { path: 'auth', loadChildren: './auth/auth.module#AuthModule' }
+  { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
+  { path: 'admin', loadChildren: './admin/admin.module#AdminModule' }
 ];
 
 const config: ExtraOptions = {

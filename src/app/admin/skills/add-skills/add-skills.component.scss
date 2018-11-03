@@ -1,0 +1,47 @@
+.skills {
+    padding: 40px 0;
+    .my-skills {
+        .skill-pool {
+            button {
+                padding-right: 50px;
+            }
+        }
+    }
+}
+
+.choose-skills {
+    .skill-pool {
+        button {
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+.skill-pool {
+    padding: 40px 0;
+    button {
+        margin: 20px;
+        cursor: pointer;
+        position: relative;
+        .remove-skill {
+            position: absolute;
+            right: 5px;
+            top: 0;
+            height: 100%;
+            width: 40px;
+            i {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            &:hover {
+                i {
+                    color: rgba(71, 71, 71, .4);
+                }
+            }
+        }
+    }
+}

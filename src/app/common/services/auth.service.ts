@@ -14,6 +14,14 @@ export class AuthService {
 
     constructor(private _http: HttpClient) { }
 
+    getUser(): IUserInfo {
+        return JSON.parse(localStorage.getItem('user'));
+    }
+
+    getToken(): string {
+        return localStorage.getItem('token');
+    }
+
     login(loginDTO: ILoginDTO) {
         return this._http.post<ILoginResponse>(ApiConsts.LOGIN_ENDPOINT, loginDTO)
             .pipe(
@@ -21,8 +29,7 @@ export class AuthService {
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('user', JSON.stringify(data.user));
                     return data;
-                }, catchError(this.handleServerErrors)
-                )
+                }), catchError(this.handleServerErrors)
             );
     }
 
@@ -34,7 +41,7 @@ export class AuthService {
 
     }
 
-    handleServerErrors(error: any | any) {
-        return throwError(error.error || error.json() || error || 'Server error');
+    handleServerErrors(error: HttpErrorResponse) {
+        return throwError(error.error);
     }
 }
