@@ -1,0 +1,22 @@
+.logo {
+    padding: 0 20px;
+    span {
+        font-size: 1.25;
+        color: #000;
+        font-weight: 600;
+        text-transform: lowercase;
+    }
+}
+
+.menu-btn {
+    padding: 10px;
+    border-radius: 100%;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+}
+
+.actions {
+    position: absolute;
+    right: 30px;
+}

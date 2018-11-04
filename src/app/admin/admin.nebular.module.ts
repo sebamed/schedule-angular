@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { NbLayoutModule, NbCardModule, NbButtonModule } from '@nebular/theme';
+import { NbLayoutModule, NbCardModule, NbButtonModule, NbSpinnerModule } from '@nebular/theme';
 
 @NgModule({
-    imports: [NbLayoutModule, NbCardModule, NbButtonModule],
-    exports: [NbLayoutModule, NbCardModule, NbButtonModule]
+    imports: [NbSpinnerModule, NbLayoutModule, NbCardModule, NbButtonModule],
+    exports: [NbSpinnerModule, NbLayoutModule, NbCardModule, NbButtonModule]
 })
 export class AdminNebularModule { }

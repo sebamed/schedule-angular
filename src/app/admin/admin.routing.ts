@@ -6,7 +6,8 @@ import { AddSkillsComponent } from './skills/add-skills/add-skills.component';
 const routes: Routes = [
     {
         path: '', component: AdminComponent, children: [
-            { path: 'add-skills', component: AddSkillsComponent, pathMatch: 'full' }
+            { path: 'add-skills', component: AddSkillsComponent, pathMatch: 'full' },
+            { path: '', loadChildren: './dashboard/dashboard.module#DashboardModule' }
         ]
     }
 ];

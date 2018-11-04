@@ -1,0 +1,31 @@
+<nb-layout>
+    <nb-layout-header fixed>
+
+        <a href="#" (click)="toggle()" class="menu-btn"><i class="eva eva-menu-2"></i></a>
+        <div class="logo">
+            <span>Admin panel</span>
+        </div>
+        <div class="actions">
+            <nb-actions size="small">
+                <nb-action icon="nb-search"></nb-action>
+                <nb-action icon="nb-power-circled"></nb-action>
+                <nb-action icon="nb-person">
+                </nb-action>
+                <nb-action>
+                    <nb-user name="{{user.firstName}} {{user.lastName}}" [nbContextMenu]="profile_items">
+                    </nb-user>
+                </nb-action>
+            </nb-actions>
+        </div>
+    </nb-layout-header>
+
+    <nb-sidebar>
+        <nb-menu [items]="sidebar_items"></nb-menu>
+    </nb-sidebar>
+
+    <nb-layout-column>
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
+    </nb-layout-column>
+</nb-layout>

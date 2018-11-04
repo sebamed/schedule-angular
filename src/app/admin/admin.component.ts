@@ -18,10 +18,17 @@ export class AdminComponent implements OnInit {
 
     checkAdmin() {
         const user = this._auth.getUser();
-        if ((user != null || user !== undefined)
-            && user.role.name !== AppConstants.ROLE_ADMIN) {
-            this._toast.addErrorToast(AppConstants.TOAST_INSUFFICIENT_PERMISSION);
-            this._router.navigate(['/']);
+        if ((user != null || user !== undefined)) {
+            if (user.role.name !== AppConstants.ROLE_ADMIN) {
+                this._toast.addErrorToast(AppConstants.TOAST_INSUFFICIENT_PERMISSION);
+                this._router.navigate(['/']);
+            } else {
+                if (user.skills.length === 0) {
+                    this._router.navigate(['/admin/add-skills']);
+                } else {
+                    this._toast.addSuccessToast('ima');
+                }
+            }
         }
     }
 

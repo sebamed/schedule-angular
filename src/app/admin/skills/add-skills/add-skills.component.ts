@@ -15,6 +15,10 @@ import { AppConstants } from '../../../common/constants/app.constants';
 
 export class AddSkillsComponent implements OnInit {
 
+    // spinners
+    userSkills_loading: Boolean = true;
+    subjects_loading: Boolean = true;
+
     subjects: ISubject[] = [];
     userSkills: ISubject[] = [];
 
@@ -25,29 +29,32 @@ export class AddSkillsComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.setAllSkills();
         this.setUserSkills();
     }
 
     setAllSkills() {
         this._subject.getAllSubjects().subscribe((data: ISubject[]) => {
+            data.forEach(subject => {
+                this.userSkills.forEach(skill => {
+                    if (subject.name === skill.name) {
+                        data.splice(data.indexOf(subject), 1);
+                    }
+                });
+            });
             this.subjects = data;
+            this.subjects_loading = false;
         }, (error: IErrorResponse) => {
             this._toast.addErrorToast(error.errorMessage);
         });
     }
 
-    redefineLists() {
-        this.userSkills.forEach(subject => {
-            this.subjects.splice(this.subjects.indexOf(subject));
-        });
-    }
 
     setUserSkills() {
         const user = this._auth.getUser();
         this._user.getUserSkills(user.id).subscribe((data: ISubject[]) => {
             this.userSkills = data;
-            this.redefineLists();
+            this.userSkills_loading = false;
+            this.setAllSkills();
         }, (error: IErrorResponse) => {
             this.userSkills = [];
             this._toast.addErrorToast(AppConstants.TOAST_LIST_EMPTY);
@@ -56,7 +63,7 @@ export class AddSkillsComponent implements OnInit {
 
     save() {
         const user = this._auth.getUser();
-        this._user.updateUserSkills(user.id, this.userSkills).subscribe((data: ISubject[]) => {
+        this._user.updateUserSkills(user.id, this.userSkills).subscribe(() => {
             this._toast.addSuccessToast(AppConstants.TOAST_SUCCESSFULLY_UPDATED);
         }, (error: IErrorResponse) => {
             this._toast.addErrorToast(error.errorMessage);

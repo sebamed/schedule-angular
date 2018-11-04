@@ -1,46 +1,54 @@
-<div class="row justify-content-center">
-    <div class="col-md-11">
-        <nb-card>
-            <nb-card-header>
-                Please choose up to 3 skills
-            </nb-card-header>
-            <nb-card-body>
-                <div class="row justify-content-center">
-                    <div class="col-md-6 text-center skills">
-                        <div class="my-skills">
-                            <h2>
-                                My skills:
-                            </h2>
-                            <div class="skill-pool">
-                                <div class="no-data" *ngIf="userSkills.length === 0">
-                                    <h2>
-                                        You have no skills yet!
-                                    </h2>
-                                </div>
-                                <button *ngFor="let subject of userSkills" nbButton hero status="primary">{{subject.name}}
-                                    <div class="remove-skill" (click)="removeSkill(subject)">
-                                        <i class="eva eva-close"></i>
+<nb-layout>
+    <nb-layout-column>
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-11">
+                    <nb-card>
+                        <nb-card-header>
+                            Please choose up to 3 skills
+                        </nb-card-header>
+                        <nb-card-body>
+                            <div class="row justify-content-center">
+                                <div class="col-md-6 text-center skills">
+                                    <div class="my-skills">
+                                        <h2>
+                                            My skills:
+                                        </h2>
+                                        <div class="skill-pool" [nbSpinner]="userSkills_loading" nbSpinnerStatus="success" nbSpinnerSize="xlarge">
+                                            <div class="no-data" *ngIf="userSkills.length === 0">
+                                                <h2>
+                                                    You have no skills yet!
+                                                </h2>
+                                            </div>
+                                            <button *ngFor="let subject of userSkills" nbButton hero status="primary">{{subject.name}}
+                                                <div class="remove-skill" (click)="removeSkill(subject)">
+                                                    <i class="eva eva-close"></i>
+                                                </div>
+                                            </button>
+                                        </div>
                                     </div>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="choose-skills">
-                            <h2>Choose skills:</h2>
-                            <div class="skill-pool">
-                                <div class="no-data" *ngIf="subjects.length === 0">
-                                    <h2>
-                                        No skills added in database!
-                                    </h2>
+                                    <div class="choose-skills">
+                                        <h2>Choose skills:</h2>
+                                        <div class="skill-pool" [nbSpinner]="subjects_loading" nbSpinnerStatus="success" nbSpinnerSize="xlarge">
+                                            <div class="no-data" *ngIf="subjects.length === 0">
+                                                <h2>
+                                                    No skills added in database!
+                                                </h2>
+                                            </div>
+                                            <button hero [disabled]="userSkills.length > 2" *ngFor="let subject of subjects"
+                                                nbButton hero status="info" (click)="addSkill(subject)">{{subject.name}}</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <button hero [disabled]="userSkills.length > 2" *ngFor="let subject of subjects" nbButton hero status="info" (click)="addSkill(subject)">{{subject.name}}</button>
                             </div>
-                        </div>
-                    </div>
+                        </nb-card-body>
+                        <nb-card-footer>
+                            <button (click)="save()" hero [disabled]="userSkills.length === 0" style="float: right"
+                                nbButton status="success">Save my skills</button>
+                        </nb-card-footer>
+                    </nb-card>
                 </div>
-            </nb-card-body>
-            <nb-card-footer>
-                <button (click)="save()" hero [disabled]="userSkills.length === 0" style="float: right" nbButton status="success">Save my skills</button>
-            </nb-card-footer>
-        </nb-card>
-    </div>
-</div>
+            </div>
+        </div>
+    </nb-layout-column>
+</nb-layout>

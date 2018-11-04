@@ -11,4 +11,9 @@ export class AppConstants {
     // roles
     public static ROLE_ADMIN = 'ADMIN';
     public static ROLE_USER = 'USER';
+
+    // icon constants
+    public static ICON_DASHBOARD = 'nb-bar-chart';
+    public static ICON_USER = 'nb-person';
+    public static ICON_SUBJECT = 'nb-compose';
 }
