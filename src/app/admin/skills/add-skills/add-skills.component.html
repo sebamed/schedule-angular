@@ -1,34 +1,24 @@
-<div class="row">
-    <div class="col-md-12">
+<div class="row justify-content-center">
+    <div class="col-md-11">
         <nb-card>
             <nb-card-header>
-                Please choose 3 skills
+                Please choose up to 3 skills
             </nb-card-header>
             <nb-card-body>
                 <div class="row justify-content-center">
-                    <div class="col-md-10 text-center skills">
+                    <div class="col-md-6 text-center skills">
                         <div class="my-skills">
                             <h2>
                                 My skills:
                             </h2>
                             <div class="skill-pool">
-                                <button nbButton status="primary">Primary
-                                    <div class="remove-skill">
-                                        <i class="eva eva-close"></i>
-                                    </div>
-                                </button>
-                                <button nbButton status="primary">Primary
-                                    <div class="remove-skill">
-                                        <i class="eva eva-close"></i>
-                                    </div>
-                                </button>
-                                <button nbButton status="primary">Primary
-                                    <div class="remove-skill">
-                                        <i class="eva eva-close"></i>
-                                    </div>
-                                </button>
-                                <button nbButton status="primary">Primary
-                                    <div class="remove-skill">
+                                <div class="no-data" *ngIf="userSkills.length === 0">
+                                    <h2>
+                                        You have no skills yet!
+                                    </h2>
+                                </div>
+                                <button *ngFor="let subject of userSkills" nbButton hero status="primary">{{subject.name}}
+                                    <div class="remove-skill" (click)="removeSkill(subject)">
                                         <i class="eva eva-close"></i>
                                     </div>
                                 </button>
@@ -37,20 +27,19 @@
                         <div class="choose-skills">
                             <h2>Choose skills:</h2>
                             <div class="skill-pool">
-                                <button nbButton status="primary">Primary</button>
-                                <button nbButton status="primary">Primary</button>
-                                <button nbButton status="primary">Primary</button>
-                                <button nbButton status="primary">Primary</button>
-                                <button nbButton status="primary">Primary</button>
-                                <button nbButton status="primary">Primary</button>
-                                <button nbButton status="primary">Primary</button>
+                                <div class="no-data" *ngIf="subjects.length === 0">
+                                    <h2>
+                                        No skills added in database!
+                                    </h2>
+                                </div>
+                                <button hero [disabled]="userSkills.length > 2" *ngFor="let subject of subjects" nbButton hero status="info" (click)="addSkill(subject)">{{subject.name}}</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </nb-card-body>
             <nb-card-footer>
-                <button style="float: right" nbButton status="success">Save my skills</button>
+                <button (click)="save()" hero [disabled]="userSkills.length === 0" style="float: right" nbButton status="success">Save my skills</button>
             </nb-card-footer>
         </nb-card>
     </div>

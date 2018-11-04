@@ -1,5 +1,18 @@
+nb-card-body {
+    height: calc(100vh - 228px);
+}
+
 .skills {
     padding: 40px 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    h2 {
+        font-size: 18px;
+        text-transform: uppercase;
+        color: rgba(0, 0, 0, .7);
+    }
     .my-skills {
         .skill-pool {
             button {
@@ -21,6 +34,18 @@
 
 .skill-pool {
     padding: 40px 0;
+    .no-data {
+        border: 1px solid #f1f1f1;
+        border-radius: 5px;
+        padding: 40px;
+        background-color: #fcfcfc;
+        h2 {
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: rgb(161, 153, 153);
+        }
+    }
     button {
         margin: 20px;
         cursor: pointer;
@@ -43,5 +68,14 @@
                 }
             }
         }
+    }
+}
+
+@media only screen and (max-width: 650px){
+    .skills {
+        position: relative;
+        transform: none;
+        top: 0;
+        left: 0;
     }
 }

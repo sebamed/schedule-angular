@@ -10,14 +10,12 @@ export class ApiInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        const headers = req.headers;
+        let headers;
 
         if (req.url.includes('auth')) {
-            console.log('auth');
-            headers.set('Content-Type', 'application/json');
+            headers = req.headers.set('Content-Type', 'application/json');
         } else {
-            console.log('nije auth');
-            headers
+            headers = req.headers
                 .set('Content-Type', 'application/json')
                 .set('Authorization', 'Bearer ' + this._auth.getToken());
         }

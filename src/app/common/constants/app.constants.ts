@@ -5,6 +5,8 @@ export class AppConstants {
 
     // toasts
     public static TOAST_INSUFFICIENT_PERMISSION = 'Insufficient permission';
+    public static TOAST_LIST_EMPTY = 'No data in list';
+    public static TOAST_SUCCESSFULLY_UPDATED = 'Successfully updated';
 
     // roles
     public static ROLE_ADMIN = 'ADMIN';

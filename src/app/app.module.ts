@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from './common/services/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiInterceptor } from './common/interceptor/api.interceptor';
+import { SubjectService } from './common/services/subject.service';
+import { UserService } from './common/services/user.service';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { ApiInterceptor } from './common/interceptor/api.interceptor';
   providers: [
     ToastService,
     AuthService,
+    SubjectService,
+    UserService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,
