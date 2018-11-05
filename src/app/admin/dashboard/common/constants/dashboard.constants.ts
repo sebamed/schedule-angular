@@ -26,6 +26,10 @@ export class DashboardConstants {
                 {
                     title: 'Overview',
                     link: ['/admin/subject']
+                },
+                {
+                    title: 'Teachers by subject',
+                    link: ['/admin/subject/teachers']
                 }
             ],
         },
@@ -132,7 +136,7 @@ export class DashboardConstants {
         }
     };
 
-    public static TABLE_SETTINGS_ROLE_USER = {
+    public static TABLE_SETTINGS_ENTITY_USER = {
         actions: {
             delete: false,
             edit: false,

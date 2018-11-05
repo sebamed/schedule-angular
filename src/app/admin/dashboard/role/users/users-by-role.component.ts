@@ -26,7 +26,7 @@ export class UsersByRoleComponent implements OnInit {
     constructor(private _role: RoleService, private _toast: ToastService, private _user: UserService) { }
 
     ngOnInit() {
-        this.table_settings = DashboardConstants.TABLE_SETTINGS_ROLE_USER;
+        this.table_settings = DashboardConstants.TABLE_SETTINGS_ENTITY_USER;
         this.getAllRoles();
     }
 
@@ -37,10 +37,15 @@ export class UsersByRoleComponent implements OnInit {
                     role: role.name,
                     users: data
                 });
+            }, error => {
+                this.tables.push({
+                    role: role.name,
+                    users: []
+                });
             });
         });
     }
-    
+
     getAllRoles() {
         this._role.getAllRoles().subscribe((data: IRole[]) => {
             this.roles = data;

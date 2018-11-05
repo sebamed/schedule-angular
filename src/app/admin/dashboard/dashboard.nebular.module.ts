@@ -9,7 +9,8 @@ import {
     NbContextMenuModule,
     NbButtonModule,
     NbSpinnerModule,
-    NbCardModule
+    NbCardModule,
+    NbAccordionModule
 } from '@nebular/theme';
 import { NbMenuInternalService, NbMenuService } from '@nebular/theme/components/menu/menu.service';
 
@@ -23,6 +24,7 @@ import { NbMenuInternalService, NbMenuService } from '@nebular/theme/components/
         NbSidebarModule,
         NbMenuModule,
         NbUserModule,
+        NbAccordionModule,
         NbContextMenuModule
     ],
     exports: [
@@ -34,6 +36,7 @@ import { NbMenuInternalService, NbMenuService } from '@nebular/theme/components/
         NbSidebarModule,
         NbMenuModule,
         NbUserModule,
+        NbAccordionModule,
         NbContextMenuModule
     ],
     providers: [NbSidebarService, NbMenuService, NbMenuInternalService]

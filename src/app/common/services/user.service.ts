@@ -12,6 +12,10 @@ export class UserService {
 
     constructor(private _http: HttpClient) { }
 
+    getUsersBySubjectId(subject: ISubject) {
+        return this._http.get<IUserInfo[]>(ApiConsts.USER_ALL_BY_SUBJECT +  subject.id.toString());
+    }
+
     getUsersByRole(role: IRole) {
         return this._http.get<IUserInfo[]>(ApiConsts.USER_ALL_BY_ROLE + role.name);
     }
