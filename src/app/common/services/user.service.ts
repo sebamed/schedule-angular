@@ -5,11 +5,16 @@ import { ISubject } from '../model/subject.model';
 import { catchError, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { IUserInfo } from '../model/user-info.model';
+import { IRole } from '../model/role.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
 
     constructor(private _http: HttpClient) { }
+
+    getUsersByRole(role: IRole) {
+        return this._http.get<IUserInfo[]>(ApiConsts.USER_ALL_BY_ROLE + role.name);
+    }
 
     getUserSkills(id: number) {
         return this._http.get<ISubject[]>(ApiConsts.USER_ENDPOINT + id.toString() + '/skills');

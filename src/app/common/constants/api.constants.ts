@@ -12,4 +12,5 @@ export class ApiConsts {
     public static ROLE_CREATE = ApiConsts.API + '/roles';
 
     public static USER_ENDPOINT = ApiConsts.API + '/users/';
+    public static USER_ALL_BY_ROLE = ApiConsts.USER_ENDPOINT + 'role/';
 }

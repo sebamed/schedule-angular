@@ -32,8 +32,7 @@
               "./node_modules/@nebular/theme/styles/prebuilt/default.css",
               "./node_modules/eva-icons/style/eva-icons.css",
               "./node_modules/nebular-icons/scss/nebular-icons.scss",
-              "./node_modules/ionicons/dist/css/ionicons.min.css",
-              "./node_modules/@nebular/theme/styles/global/tables/_smart-table.theme.scss"
+              "./node_modules/ionicons/dist/css/ionicons.min.css"
             ],
             "scripts": [
             ]

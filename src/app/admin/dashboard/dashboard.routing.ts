@@ -5,6 +5,7 @@ import { SubjectComponent } from './subject/subject.component';
 import { SubjectOverviewComponent } from './subject/overview/overview.component';
 import { RoleComponent } from './role/role.component';
 import { RoleOverviewComponent } from './role/overview/overview.component';
+import { UsersByRoleComponent } from './role/users/users-by-role.component';
 
 const routes: Routes = [
     {
@@ -16,7 +17,8 @@ const routes: Routes = [
             },
             {
                 path: 'role', component: RoleComponent, children: [
-                    { path: '', component: RoleOverviewComponent, pathMatch: 'full' }
+                    { path: '', component: RoleOverviewComponent, pathMatch: 'full' },
+                    { path: 'users', component: UsersByRoleComponent, pathMatch: 'full' }
                 ]
             }
         ]
@@ -35,5 +37,6 @@ export const dashboardComponents = [
     SubjectComponent,
     SubjectOverviewComponent,
     RoleComponent,
-    RoleOverviewComponent
+    RoleOverviewComponent,
+    UsersByRoleComponent
 ];

@@ -54,9 +54,6 @@ export class SubjectOverviewComponent implements OnInit {
                 this._toast.addErrorToast(error.errorMessage);
             });
         }
-        console.log(event);
-        // todo:
-        // edit subject with newData
     }
 
     onCreateConfirm(event) {

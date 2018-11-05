@@ -1,0 +1,12 @@
+<div class="row justify-content-center" [nbSpinner]="data_loading" nbSpinnerStatus="success" nbSpinnerSize="xlarge">
+    <div *ngFor="let table of tables" class="col-md-12">
+        <nb-card>
+            <nb-card-header>
+                {{table.role}} ({{table.users.length}})
+            </nb-card-header>
+            <nb-card-body>
+                <ng2-smart-table [settings]="table_settings" [source]="table.users"></ng2-smart-table>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

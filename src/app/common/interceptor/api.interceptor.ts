@@ -28,6 +28,9 @@ export class ApiInterceptor implements HttpInterceptor {
     }
 
     handleServerErrors(error: HttpErrorResponse) {
+        if (error.status === 404) {
+            return throwError(error);
+        }
         return throwError(error.error);
     }
 }

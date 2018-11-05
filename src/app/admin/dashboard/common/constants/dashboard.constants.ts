@@ -25,7 +25,7 @@ export class DashboardConstants {
             children: [
                 {
                     title: 'Overview',
-                    link: ['/admin/subject'], // goes into angular `routerLink`
+                    link: ['/admin/subject']
                 }
             ],
         },
@@ -36,11 +36,11 @@ export class DashboardConstants {
             children: [
                 {
                     title: 'Overview',
-                    link: ['/admin/role'], // goes into angular `routerLink`
+                    link: ['/admin/role']
                 },
                 {
                     title: 'User by role',
-                    link: []
+                    link: ['/admin/role/users']
                 }
             ],
         }, {
@@ -50,15 +50,15 @@ export class DashboardConstants {
             children: [
                 {
                     title: 'Change Password',
-                    link: [], // goes into angular `routerLink`
+                    link: [],
                 },
                 {
                     title: 'Privacy Policy',
-                    ulr: '#', // goes directly into `href` attribute
+                    ulr: '#',
                 },
                 {
                     title: 'Logout',
-                    link: [],
+                    link: []
                 },
             ],
         }, {
@@ -68,11 +68,11 @@ export class DashboardConstants {
             children: [
                 {
                     title: 'Change Password',
-                    link: [], // goes into angular `routerLink`
+                    link: []
                 },
                 {
                     title: 'Privacy Policy',
-                    ulr: '#', // goes directly into `href` attribute
+                    ulr: '#'
                 },
                 {
                     title: 'Logout',
@@ -128,6 +128,28 @@ export class DashboardConstants {
             },
             name: {
                 title: 'Name'
+            }
+        }
+    };
+
+    public static TABLE_SETTINGS_ROLE_USER = {
+        actions: {
+            delete: false,
+            edit: false,
+            add: false
+        },
+        columns: {
+            id: {
+                title: 'ID'
+            },
+            firstName: {
+                title: 'Name'
+            },
+            lastName: {
+                title: 'Surname'
+            },
+            email: {
+                title: 'Email'
             }
         }
     };
