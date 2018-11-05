@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
-    <div class="col-md-12"  [nbSpinner]="data_loading" nbSpinnerStatus="success" nbSpinnerSize="xlarge">
-        <ng2-smart-table [settings]="table_settings" [source]="subjects" (createConfirm)="onCreateConfirm($event)" (editConfirm)="onEditConfirm($event)"></ng2-smart-table>
+    <div class="col-md-12" [nbSpinner]="data_loading" nbSpinnerStatus="success" nbSpinnerSize="xlarge">
+        <ng2-smart-table [settings]="table_settings" [source]="dataSource" (createConfirm)="onCreateConfirm($event)" (editConfirm)="onEditConfirm($event)"></ng2-smart-table>
     </div>
 </div>

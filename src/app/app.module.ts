@@ -13,6 +13,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiInterceptor } from './common/interceptor/api.interceptor';
 import { SubjectService } from './common/services/subject.service';
 import { UserService } from './common/services/user.service';
+import { RoleService } from './common/services/role.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { UserService } from './common/services/user.service';
     AuthService,
     SubjectService,
     UserService,
+    RoleService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,

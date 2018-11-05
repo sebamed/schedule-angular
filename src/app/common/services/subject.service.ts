@@ -10,15 +10,15 @@ export class SubjectService {
 
     constructor(private _http: HttpClient) { }
 
+    update(subject: ISubject){
+        return this._http.put<ISubject>(ApiConsts.SUBJECT_UPDATE, subject);
+    }
+
+    create(subject: ISubject) {
+        return this._http.post<ISubject>(ApiConsts.SUBJECT_CREATE, subject);
+    }
+
     getAllSubjects() {
-        return this._http.get<ISubject[]>(ApiConsts.SUBJECT_ALL_GET)
-            .pipe(
-                catchError(this.handleServerErrors)
-            );
+        return this._http.get<ISubject[]>(ApiConsts.SUBJECT_ALL_GET);
     }
-
-    handleServerErrors(error: HttpErrorResponse) {
-        return throwError(error.error);
-    }
-
 }

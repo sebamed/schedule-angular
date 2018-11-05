@@ -5,6 +5,11 @@ export class ApiConsts {
     public static REGISTER_ENDPOINT = ApiConsts.API + '/auth/register';
 
     public static SUBJECT_ALL_GET = ApiConsts.API + '/subjects';
+    public static SUBJECT_CREATE = ApiConsts.API + '/subjects';
+    public static SUBJECT_UPDATE = ApiConsts.API + '/subjects';
+
+    public static ROLE_ALL_GET = ApiConsts.API + '/roles';
+    public static ROLE_CREATE = ApiConsts.API + '/roles';
 
     public static USER_ENDPOINT = ApiConsts.API + '/users/';
 }

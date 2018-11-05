@@ -12,10 +12,7 @@ export class UserService {
     constructor(private _http: HttpClient) { }
 
     getUserSkills(id: number) {
-        return this._http.get<ISubject[]>(ApiConsts.USER_ENDPOINT + id.toString() + '/skills')
-            .pipe(
-                catchError(this.handleServerErrors)
-            );
+        return this._http.get<ISubject[]>(ApiConsts.USER_ENDPOINT + id.toString() + '/skills');
     }
 
     updateUserSkills(id: number, skills: ISubject[]) {
@@ -25,12 +22,7 @@ export class UserService {
                     const user = <IUserInfo>JSON.parse(localStorage.getItem('user'));
                     user.skills = data;
                     localStorage.setItem('user', JSON.stringify(user));
-                }),
-                catchError(this.handleServerErrors)
+                })
             );
-    }
-
-    handleServerErrors(error: HttpErrorResponse) {
-        return throwError(error.error);
     }
 }

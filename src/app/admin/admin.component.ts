@@ -24,9 +24,10 @@ export class AdminComponent implements OnInit {
                 this._router.navigate(['/']);
             } else {
                 if (user.skills.length === 0) {
+                    // todo : salje ga da izabere skill
                     this._router.navigate(['/admin/add-skills']);
                 } else {
-                    this._toast.addSuccessToast('ima');
+
                 }
             }
         }

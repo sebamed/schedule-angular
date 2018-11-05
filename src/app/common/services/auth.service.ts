@@ -29,19 +29,11 @@ export class AuthService {
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('user', JSON.stringify(data.user));
                     return data;
-                }), catchError(this.handleServerErrors)
+                })
             );
     }
 
     register(registerDTO: IRegisterDTO) {
-        return this._http.post<IUserInfo>(ApiConsts.REGISTER_ENDPOINT, registerDTO)
-            .pipe(
-                catchError(this.handleServerErrors)
-            );
-
-    }
-
-    handleServerErrors(error: HttpErrorResponse) {
-        return throwError(error.error);
+        return this._http.post<IUserInfo>(ApiConsts.REGISTER_ENDPOINT, registerDTO);
     }
 }

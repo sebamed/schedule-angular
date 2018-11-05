@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { SubjectComponent } from './subject/subject.component';
 import { SubjectOverviewComponent } from './subject/overview/overview.component';
+import { RoleComponent } from './role/role.component';
+import { RoleOverviewComponent } from './role/overview/overview.component';
 
 const routes: Routes = [
     {
@@ -10,6 +12,11 @@ const routes: Routes = [
             {
                 path: 'subject', component: SubjectComponent, children: [
                     { path: '', component: SubjectOverviewComponent, pathMatch: 'full' }
+                ]
+            },
+            {
+                path: 'role', component: RoleComponent, children: [
+                    { path: '', component: RoleOverviewComponent, pathMatch: 'full' }
                 ]
             }
         ]
@@ -26,5 +33,7 @@ export class DashboardRoutingModule { }
 export const dashboardComponents = [
     DashboardComponent,
     SubjectComponent,
-    SubjectOverviewComponent
+    SubjectOverviewComponent,
+    RoleComponent,
+    RoleOverviewComponent
 ];

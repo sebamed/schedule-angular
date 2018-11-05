@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class ApiInterceptor implements HttpInterceptor {
@@ -20,6 +21,13 @@ export class ApiInterceptor implements HttpInterceptor {
                 .set('Authorization', 'Bearer ' + this._auth.getToken());
         }
         const authReq = req.clone({ headers });
-        return next.handle(authReq);
+        return next.handle(authReq)
+            .pipe(
+                catchError(this.handleServerErrors)
+            );
+    }
+
+    handleServerErrors(error: HttpErrorResponse) {
+        return throwError(error.error);
     }
 }

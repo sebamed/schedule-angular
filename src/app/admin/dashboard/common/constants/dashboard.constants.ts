@@ -26,30 +26,22 @@ export class DashboardConstants {
                 {
                     title: 'Overview',
                     link: ['/admin/subject'], // goes into angular `routerLink`
-                },
-                {
-                    title: 'Create',
-                    link: [],
                 }
             ],
         },
         {
-            title: 'Lessons',
+            title: 'Roles',
             expanded: false,
-            icon: AppConstants.ICON_USER,
+            icon: AppConstants.ICON_ROLE,
             children: [
                 {
                     title: 'Overview',
-                    link: [], // goes into angular `routerLink`
+                    link: ['/admin/role'], // goes into angular `routerLink`
                 },
                 {
-                    title: 'Privacy Policy',
-                    ulr: '#', // goes directly into `href` attribute
-                },
-                {
-                    title: 'Logout',
-                    link: [],
-                },
+                    title: 'User by role',
+                    link: []
+                }
             ],
         }, {
             title: 'Users',
@@ -110,8 +102,29 @@ export class DashboardConstants {
         columns: {
             id: {
                 title: 'ID',
-                editable: false,
-                creatable: false
+                editable: false
+            },
+            name: {
+                title: 'Name'
+            }
+        }
+    };
+
+    public static TABLE_SETTINGS_ROLE = {
+        add: {
+            addButtonContent: '<i class="nb-plus"></i>',
+            createButtonContent: '<i class="nb-checkmark"></i>',
+            cancelButtonContent: '<i class="nb-close"></i>',
+            confirmCreate: true
+        },
+        actions: {
+            delete: false,
+            edit: false
+        },
+        columns: {
+            id: {
+                title: 'ID',
+                editable: false
             },
             name: {
                 title: 'Name'
