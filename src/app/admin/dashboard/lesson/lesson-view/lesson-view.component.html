@@ -1,0 +1,25 @@
+<nb-reveal-card>
+    <nb-card-front>
+        <nb-card status="{{lesson_type}}">
+            <nb-card-header>{{lesson.date | date: 'EEEE, MMMM d'}} at {{lesson.time | slice:0:5}}</nb-card-header>
+            <nb-card-body>
+                <ul>
+                    <li><b>ID: </b>{{lesson.id}}</li>
+                    <li><b>Subject:</b> {{lesson.course.subject.name}}</li>
+                    <li><b>Material: </b><span *ngFor="let mat of lesson.course.material">{{mat}} | </span></li>
+                    <li><b>Types: </b><span *ngFor="let type of lesson.course.types">{{type}} | </span></li>
+                </ul>
+            </nb-card-body>
+        </nb-card>
+    </nb-card-front>
+    <nb-card-back>
+        <nb-card>
+            <nb-card-body>
+                <ul>
+                    <li><b>Students joined:</b> {{lesson.students.length}}</li>
+                </ul>
+                <button *ngIf="lesson_type === 'warning'" fullWidth nbButton status="{{lesson_type}}" (click)="openConfirmWindow()">Confirm</button>
+            </nb-card-body>
+        </nb-card>
+    </nb-card-back>
+</nb-reveal-card>

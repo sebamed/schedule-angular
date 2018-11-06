@@ -7,6 +7,10 @@ import { RoleComponent } from './role/role.component';
 import { RoleOverviewComponent } from './role/overview/overview.component';
 import { UsersByRoleComponent } from './role/users/users-by-role.component';
 import { TeachersBySubjectComponent } from './subject/teachers/teachers-by-subject.component';
+import { LessonComponent } from './lesson/lesson.component';
+import { LessonRequestsComponent } from './lesson/requests/requests.component';
+import { LessonViewComponent } from './lesson/lesson-view/lesson-view.component';
+import { ConfirmLessonWindowComponent } from './lesson/windows/confirm/confirm-lesson.component';
 
 const routes: Routes = [
     {
@@ -21,6 +25,11 @@ const routes: Routes = [
                 path: 'role', component: RoleComponent, children: [
                     { path: '', component: RoleOverviewComponent, pathMatch: 'full' },
                     { path: 'users', component: UsersByRoleComponent, pathMatch: 'full' }
+                ]
+            },
+            {
+                path: 'lesson', component: LessonComponent, children: [
+                    { path: 'my-lessons/requests', component: LessonRequestsComponent, pathMatch: 'full' },
                 ]
             }
         ]
@@ -41,5 +50,13 @@ export const dashboardComponents = [
     TeachersBySubjectComponent,
     RoleComponent,
     RoleOverviewComponent,
-    UsersByRoleComponent
+    UsersByRoleComponent,
+    LessonComponent,
+    LessonRequestsComponent,
+    LessonViewComponent,
+    ConfirmLessonWindowComponent
+];
+
+export const dashboardEntryComponents = [
+    ConfirmLessonWindowComponent
 ];

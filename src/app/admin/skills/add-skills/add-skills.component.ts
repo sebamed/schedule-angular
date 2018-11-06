@@ -58,6 +58,8 @@ export class AddSkillsComponent implements OnInit {
         }, (error: IErrorResponse) => {
             this.userSkills = [];
             this._toast.addErrorToast(AppConstants.TOAST_LIST_EMPTY);
+            this.setAllSkills();
+            this.userSkills_loading = false;
         });
     }
 

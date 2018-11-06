@@ -12,7 +12,11 @@ export class ApiConsts {
     public static ROLE_ALL_GET = ApiConsts.API + '/roles';
     public static ROLE_CREATE = ApiConsts.API + '/roles';
 
-    public static USER_ENDPOINT = ApiConsts.API + '/users/';
-    public static USER_ALL_BY_ROLE = ApiConsts.USER_ENDPOINT + 'role/';
-    public static USER_ALL_BY_SUBJECT = ApiConsts.USER_ENDPOINT + 'skill/';
+    public static USER_ENDPOINT = ApiConsts.API + '/users';
+    public static USER_ALL_BY_ROLE = ApiConsts.USER_ENDPOINT + '/role/';
+    public static USER_ALL_BY_SUBJECT = ApiConsts.USER_ENDPOINT + '/skill/';
+
+    public static LESSON_ENDPOINT = ApiConsts.API + '/lessons';
+    public static LESSON_ALL_BY_SKILL_NAME = ApiConsts.LESSON_ENDPOINT + '/skill/'; // + skill name
+    public static LESSON_CONFIRM = ApiConsts.LESSON_ENDPOINT + '/confirm';
 }

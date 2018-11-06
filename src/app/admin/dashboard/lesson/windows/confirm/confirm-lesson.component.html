@@ -1,0 +1,51 @@
+<p>
+    You are about to confirm lesson with ID {{lesson.id}}. Please carefully check these details first, and provide
+    necessary data:
+</p>
+<nb-list>
+    <nb-list-item>
+        <b>Lesson ID:</b> {{lesson.id}}
+    </nb-list-item>
+    <nb-list-item>
+        <b>Date and time:</b> {{lesson.date | date: 'EEEE, MMMM d'}} at {{lesson.time | slice:0:5}}
+    </nb-list-item>
+    <nb-list-item>
+        <b>Teacher:</b> {{user.firstName + ' ' + user.lastName}}
+    </nb-list-item>
+    <nb-list-item>
+        <b>Subject:</b> {{lesson.course.subject.name}}
+    </nb-list-item>
+    <nb-list-item>
+        <b>Material: </b><span *ngFor="let mat of lesson.course.material">{{mat}} | </span>
+    </nb-list-item>
+    <nb-list-item>
+        <b>Types: </b><span *ngFor="let type of lesson.course.types">{{type}} | </span>
+    </nb-list-item>
+    <nb-list-item>
+        <b>Duration (minutes): </b> <input id="duration" type="text" nbInput value="120">
+    </nb-list-item>
+    <nb-list-item>
+        <b>Price (RSD): </b> <input id="price" type="text" nbInput value="1000">
+    </nb-list-item>
+    <nb-list-item>
+        <nb-accordion>
+            <nb-accordion-item>
+                <nb-accordion-item-header>
+                    Students ({{lesson.students.length}})
+                </nb-accordion-item-header>
+                <nb-accordion-item-body>
+                    <b *ngFor="let student of lesson.students">({{student.firstName + ' ' + student.lastName}}) </b>
+                </nb-accordion-item-body>
+            </nb-accordion-item>
+        </nb-accordion>
+    </nb-list-item>
+</nb-list>
+<p>
+    If you confirm, students will be notified about your confirmation, and will recieve all necessary information
+    through their email address. You can cancel this lesson at any given moment.
+    <br /><br /><b>Are you sure you want to confirm this lesson?</b>
+</p>
+<div class="buttons">
+    <button nbButton status="success" (click)="confirm()">YES</button>
+    <button nbButton status="danger" (click)="close()">NO</button>
+</div>

@@ -10,7 +10,11 @@ import {
     NbButtonModule,
     NbSpinnerModule,
     NbCardModule,
-    NbAccordionModule
+    NbAccordionModule,
+    NbWindowService,
+    NbListModule,
+    NbWindowModule,
+    NbInputModule
 } from '@nebular/theme';
 import { NbMenuInternalService, NbMenuService } from '@nebular/theme/components/menu/menu.service';
 
@@ -22,9 +26,12 @@ import { NbMenuInternalService, NbMenuService } from '@nebular/theme/components/
         NbLayoutModule,
         NbActionsModule,
         NbSidebarModule,
+        NbInputModule,
         NbMenuModule,
         NbUserModule,
         NbAccordionModule,
+        NbListModule,
+        NbWindowModule.forChild(),
         NbContextMenuModule
     ],
     exports: [
@@ -34,11 +41,19 @@ import { NbMenuInternalService, NbMenuService } from '@nebular/theme/components/
         NbLayoutModule,
         NbActionsModule,
         NbSidebarModule,
+        NbInputModule,
         NbMenuModule,
         NbUserModule,
         NbAccordionModule,
+        NbListModule,
+        NbWindowModule,
         NbContextMenuModule
     ],
-    providers: [NbSidebarService, NbMenuService, NbMenuInternalService]
+    providers: [
+        NbSidebarService,
+        NbMenuService,
+        NbMenuInternalService,
+        NbWindowService
+    ]
 })
 export class DashboardNebularModule { }

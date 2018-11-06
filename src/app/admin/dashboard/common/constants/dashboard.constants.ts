@@ -19,6 +19,38 @@ export class DashboardConstants {
             home: true
         },
         {
+            title: 'Lessons',
+            expanded: false,
+            icon: AppConstants.ICON_LESSON,
+            children: [
+                {
+                    title: 'Overview',
+                    link: ['/admin/lesson']
+                },
+                {
+                    title: 'My Lessons',
+                    children: [
+                        {
+                            title: 'Requests',
+                            link: ['/admin/lesson/my-lessons/requests']
+                        },
+                        {
+                            title: 'Confirmed',
+                            link: ['/admin/lesson/my-lessons/confirmed']
+                        },
+                        {
+                            title: 'Done',
+                            link: ['/admin/lesson/my-lessons/done']
+                        },
+                        {
+                            title: 'Canceled',
+                            link: ['/admin/lesson/my-lessons/calnceled']
+                        }
+                    ]
+                }
+            ],
+        },
+        {
             title: 'Subjects',
             expanded: false,
             icon: AppConstants.ICON_SUBJECT,
