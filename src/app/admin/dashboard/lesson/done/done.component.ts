@@ -11,6 +11,9 @@ import { IErrorResponse } from 'src/app/common/model/error-response.model';
 })
 
 export class DoneLessonsComponent implements OnInit {
+
+    data_loading: Boolean = true;
+
     user: IUserInfo;
 
     lessons: ILesson[] = [];
@@ -25,10 +28,11 @@ export class DoneLessonsComponent implements OnInit {
     setAllDoneLessons() {
         this._lesson.getDoneLessonsByTeachersId(this.user.id).subscribe((data: ILesson[]) => {
             this.lessons = data;
+            this.data_loading = false;
         }, (error: IErrorResponse) => {
+            this.data_loading = false;
         });
 
-        console.log(this.lessons);
     }
 
     setUser() {

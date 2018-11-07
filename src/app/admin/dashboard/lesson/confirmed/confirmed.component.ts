@@ -13,6 +13,8 @@ import { Subscription } from 'rxjs';
 
 export class ConfirmedLessonsComponent implements OnInit, OnDestroy {
 
+    data_loading: Boolean = true;
+
     emitterSubscription: Subscription;
 
     user: IUserInfo;
@@ -35,6 +37,7 @@ export class ConfirmedLessonsComponent implements OnInit, OnDestroy {
 
     emitterListener() {
         this.emitterSubscription = this._lesson.emitter.subscribe(() => {
+            this.data_loading = true;
             this.confirmations = [];
             this.setAllConfirmations();
         });
@@ -43,10 +46,10 @@ export class ConfirmedLessonsComponent implements OnInit, OnDestroy {
     setAllConfirmations() {
         this._lesson.getConfirmedLessonsByTeachersId(this.user.id).subscribe((data: ILesson[]) => {
             this.confirmations = data;
+            this.data_loading = false;
         }, (error: IErrorResponse) => {
+            this.data_loading = false;
         });
-
-        console.log(this.confirmations);
     }
 
     setUser() {

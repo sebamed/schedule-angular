@@ -1,6 +1,7 @@
 <h3>Confirmed lessons</h3>
 <br />
-<div class="col-md-12">
+<div class="col-md-12" [nbSpinner]="data_loading" nbSpinnerStatus="success" nbSpinnerSize="xlarge">
+    <app-admin-dashboard-lesson-no-content *ngIf="confirmations.length === 0" [message]="'No confirmed lessons yet!'"></app-admin-dashboard-lesson-no-content>
     <div class="row">
         <div class="col-md-4" *ngFor="let lesson of confirmations">
             <app-admin-dashboard-lesson-view [lesson_type]="'success'" [lesson]="lesson"></app-admin-dashboard-lesson-view>

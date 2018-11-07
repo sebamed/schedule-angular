@@ -1,12 +1,13 @@
 <h3>Requested lessons</h3>
 <br />
-<nb-accordion multi>
+<nb-accordion multi [nbSpinner]="data_loading" nbSpinnerStatus="success" nbSpinnerSize="xlarge">
     <nb-accordion-item *ngFor="let request of requests">
         <nb-accordion-item-header>
             {{request.skill}} ({{request.lessons.length}})
         </nb-accordion-item-header>
         <nb-accordion-item-body>
             <div class="col-md-12">
+                <app-admin-dashboard-lesson-no-content *ngIf="request.lessons.length === 0" [message]="'No requested lessons yet!'"></app-admin-dashboard-lesson-no-content>
                 <div class="row">
                     <div class="col-md-4" *ngFor="let lesson of request.lessons">
                         <app-admin-dashboard-lesson-view [lesson_type]="'warning'" [lesson]="lesson"></app-admin-dashboard-lesson-view>

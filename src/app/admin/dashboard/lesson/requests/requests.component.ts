@@ -17,6 +17,8 @@ export class LessonRequestsComponent implements OnInit, OnDestroy {
 
     emitterSubscription: Subscription;
 
+    data_loading: Boolean = true;
+
     user: IUserInfo;
 
     requests: any[] = [];
@@ -37,6 +39,7 @@ export class LessonRequestsComponent implements OnInit, OnDestroy {
 
     emitterListener() {
         this.emitterSubscription = this._lesson.emitter.subscribe(() => {
+            this.data_loading = true;
             this.requests = [];
             this.setAllUserSkills();
         });
@@ -50,14 +53,15 @@ export class LessonRequestsComponent implements OnInit, OnDestroy {
                     skill: skill.name,
                     lessons: data
                 });
+                this.data_loading = false;
             }, (error: IErrorResponse) => {
                 this.requests.push({
                     skill: skill.name,
                     lessons: []
                 });
+                this.data_loading = false;
             });
         });
-        console.log(this.requests);
     }
 
     setUser() {

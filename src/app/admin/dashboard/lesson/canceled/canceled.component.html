@@ -1,6 +1,7 @@
 <h3>Canceled lessons</h3>
 <br />
-<div class="col-md-12">
+<div class="col-md-12" [nbSpinner]="data_loading" nbSpinnerStatus="success" nbSpinnerSize="xlarge">
+    <app-admin-dashboard-lesson-no-content *ngIf="lessons.length === 0" [message]="'No canceled lessons yet!'"></app-admin-dashboard-lesson-no-content>
     <div class="row">
         <div class="col-md-4" *ngFor="let lesson of lessons">
             <app-admin-dashboard-lesson-view [lesson_type]="'danger'" [lesson]="lesson"></app-admin-dashboard-lesson-view>

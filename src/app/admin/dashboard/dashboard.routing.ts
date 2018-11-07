@@ -16,6 +16,7 @@ import { LessonInfoWindowComponent } from './lesson/windows/info/lesson-info.com
 import { CanceledLessonsComponent } from './lesson/canceled/canceled.component';
 import { DoneLessonsComponent } from './lesson/done/done.component';
 import { LessonDoneWindowComponent } from './lesson/windows/done/lesson-done.component';
+import { NoContentComponent } from './lesson/common/component/no-content/no-content.component';
 
 const routes: Routes = [
     {
@@ -67,7 +68,8 @@ export const dashboardComponents = [
     LessonInfoWindowComponent,
     CanceledLessonsComponent,
     DoneLessonsComponent,
-    LessonDoneWindowComponent
+    LessonDoneWindowComponent,
+    NoContentComponent
 ];
 
 export const dashboardEntryComponents = [
