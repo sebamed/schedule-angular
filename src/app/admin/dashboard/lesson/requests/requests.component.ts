@@ -16,7 +16,7 @@ import { ConfirmLessonWindowComponent } from '../windows/confirm/confirm-lesson.
 export class LessonRequestsComponent implements OnInit {
 
     user: IUserInfo;
-    
+
     requests: any[] = [];
 
     constructor(private _auth: AuthService, private _lesson: LessonService) { }

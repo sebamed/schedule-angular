@@ -9,6 +9,7 @@ export class AppConstants {
     public static TOAST_SUCCESSFULLY_UPDATED = 'Successfully updated';
     public static TOAST_SUCCESSFULLY_CONFIRMED = 'Successfully confirmed';
     public static TOAST_SUCCESSFULLY_CREATED = 'Successfully created';
+    public static TOAST_SUCCESSFULLY_CANCELED = 'Successfully canceled';
     public static TOAST_FIELD_EMPTY = 'Please fill in all necessary fields';
     public static TOAST_CHECK_EMAIL = 'Check your email';
 

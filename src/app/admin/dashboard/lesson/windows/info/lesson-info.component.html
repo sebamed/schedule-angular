@@ -1,0 +1,49 @@
+<p>
+        This lesson is confirmed by you. Please make sure you check all data and cancel if needed:
+    </p>
+    <nb-list>
+        <nb-list-item>
+            <b>Lesson ID:</b> {{lesson.id}}
+        </nb-list-item>
+        <nb-list-item>
+            <b>Date and time:</b> {{lesson.date | date: 'EEEE, MMMM d'}} at {{lesson.time | slice:0:5}}
+        </nb-list-item>
+        <nb-list-item>
+            <b>Teacher:</b> {{lesson.teacher.firstName + ' ' + lesson.teacher.lastName}}
+        </nb-list-item>
+        <nb-list-item>
+            <b>Subject:</b> {{lesson.course.subject.name}}
+        </nb-list-item>
+        <nb-list-item>
+            <b>Material: </b><span *ngFor="let mat of lesson.course.material">{{mat}} | </span>
+        </nb-list-item>
+        <nb-list-item>
+            <b>Types: </b><span *ngFor="let type of lesson.course.types">{{type}} | </span>
+        </nb-list-item>
+        <nb-list-item>
+            <b>Duration (minutes): </b>{{lesson.length}} minutes
+        </nb-list-item>
+        <nb-list-item>
+            <b>Price (RSD): </b>{{lesson.price}} RSD
+        </nb-list-item>
+        <nb-list-item>
+            <nb-accordion>
+                <nb-accordion-item>
+                    <nb-accordion-item-header>
+                        Students ({{lesson.students.length}})
+                    </nb-accordion-item-header>
+                    <nb-accordion-item-body>
+                        <b *ngFor="let student of lesson.students">({{student.firstName + ' ' + student.lastName}}) </b>
+                    </nb-accordion-item-body>
+                </nb-accordion-item>
+            </nb-accordion>
+        </nb-list-item>
+    </nb-list>
+    <p>
+        If you are unsatisfied with any of this information, you can cancel this lesson. Notification about lesson cancelation will be sent to all students.
+        <br /><br /><b>Cancel this lesson?</b>
+    </p>
+    <div class="buttons">
+        <button nbButton status="success" (click)="cancel()">YES</button>
+        <button nbButton status="danger" (click)="close()">NO</button>
+    </div>

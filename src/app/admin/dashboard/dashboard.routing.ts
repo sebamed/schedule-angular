@@ -11,6 +11,8 @@ import { LessonComponent } from './lesson/lesson.component';
 import { LessonRequestsComponent } from './lesson/requests/requests.component';
 import { LessonViewComponent } from './lesson/lesson-view/lesson-view.component';
 import { ConfirmLessonWindowComponent } from './lesson/windows/confirm/confirm-lesson.component';
+import { ConfirmedLessonsComponent } from './lesson/confirmed/confirmed.component';
+import { LessonInfoWindowComponent } from './lesson/windows/info/lesson-info.component';
 
 const routes: Routes = [
     {
@@ -30,6 +32,7 @@ const routes: Routes = [
             {
                 path: 'lesson', component: LessonComponent, children: [
                     { path: 'my-lessons/requests', component: LessonRequestsComponent, pathMatch: 'full' },
+                    { path: 'my-lessons/confirmed', component: ConfirmedLessonsComponent, pathMatch: 'full' },
                 ]
             }
         ]
@@ -54,9 +57,12 @@ export const dashboardComponents = [
     LessonComponent,
     LessonRequestsComponent,
     LessonViewComponent,
-    ConfirmLessonWindowComponent
+    ConfirmLessonWindowComponent,
+    ConfirmedLessonsComponent,
+    LessonInfoWindowComponent
 ];
 
 export const dashboardEntryComponents = [
-    ConfirmLessonWindowComponent
+    ConfirmLessonWindowComponent,
+    LessonInfoWindowComponent
 ];

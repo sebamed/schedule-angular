@@ -2,7 +2,7 @@
     <nb-card-front>
         <nb-card status="{{lesson_type}}">
             <nb-card-header>{{lesson.date | date: 'EEEE, MMMM d'}} at {{lesson.time | slice:0:5}}</nb-card-header>
-            <nb-card-body>
+            <nb-card-body class="{{lesson_type}}">
                 <ul>
                     <li><b>ID: </b>{{lesson.id}}</li>
                     <li><b>Subject:</b> {{lesson.course.subject.name}}</li>
@@ -19,6 +19,7 @@
                     <li><b>Students joined:</b> {{lesson.students.length}}</li>
                 </ul>
                 <button *ngIf="lesson_type === 'warning'" fullWidth nbButton status="{{lesson_type}}" (click)="openConfirmWindow()">Confirm</button>
+                <button *ngIf="lesson_type === 'success'" fullWidth nbButton status="{{lesson_type}}" (click)="openInfoWindow()">Info</button>
             </nb-card-body>
         </nb-card>
     </nb-card-back>

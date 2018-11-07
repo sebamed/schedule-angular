@@ -3,28 +3,34 @@ nb-reveal-card {
         color: #fff;
         font-size: 15px;
     }
-    
+
     nb-card-body {
         box-shadow: none !important;
-        background-color: rgb(255, 187, 71);
         color: #fff;
         ul {
             padding: 0;
             list-style-type: none;
-
             li {
                 font-size: 14px;
                 font-weight: 400;
                 padding: 5px 0;
             }
         }
-
         button {
             cursor: pointer;
         }
+
     }
 }
 
 nb-card {
     box-shadow: none !important;
+}
+
+.success {
+    background-color: rgb(103, 247, 160);
+}
+
+.warning {
+    background-color: rgb(255, 187, 71);
 }

@@ -12,7 +12,7 @@ import { IErrorResponse } from 'src/app/common/model/error-response.model';
 @Component({
     selector: 'app-admin-dashboard-lesson-view-confirm',
     templateUrl: './confirm-lesson.component.html',
-    styleUrls: ['./confirm-lesson.component.scss']
+    styleUrls: ['../common/scss/style.scss']
 })
 
 export class ConfirmLessonWindowComponent implements OnInit {
