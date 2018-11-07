@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IErrorResponse } from 'src/app/common/model/error-response.model';
 import { AuthService } from 'src/app/common/services/auth.service';
 import { LessonService } from 'src/app/common/services/lesson.service';
 import { IUserInfo } from 'src/app/common/model/user-info.model';
 import { ILesson } from 'src/app/common/model/lesson.model';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-admin-dashboard-lesson-confirmed',
     templateUrl: './confirmed.component.html'
 })
 
-export class ConfirmedLessonsComponent implements OnInit {
+export class ConfirmedLessonsComponent implements OnInit, OnDestroy {
+
+    emitterSubscription: Subscription;
 
     user: IUserInfo;
 
@@ -21,6 +24,20 @@ export class ConfirmedLessonsComponent implements OnInit {
     ngOnInit() {
         this.setUser();
         this.setAllConfirmations();
+        this.emitterListener();
+    }
+
+    ngOnDestroy() {
+        if (this.emitterSubscription !== undefined && this.emitterSubscription != null) {
+            this.emitterSubscription.unsubscribe();
+        }
+    }
+
+    emitterListener() {
+        this.emitterSubscription = this._lesson.emitter.subscribe(() => {
+            this.confirmations = [];
+            this.setAllConfirmations();
+        });
     }
 
     setAllConfirmations() {

@@ -13,7 +13,9 @@ import { ConfirmLessonWindowComponent } from '../windows/confirm/confirm-lesson.
     styleUrls: ['./requests.component.scss']
 })
 
-export class LessonRequestsComponent implements OnInit {
+export class LessonRequestsComponent implements OnInit, OnDestroy {
+
+    emitterSubscription: Subscription;
 
     user: IUserInfo;
 
@@ -24,6 +26,20 @@ export class LessonRequestsComponent implements OnInit {
     ngOnInit() {
         this.setUser();
         this.setAllUserSkills();
+        this.emitterListener();
+    }
+
+    ngOnDestroy() {
+        if (this.emitterSubscription !== undefined && this.emitterSubscription != null) {
+            this.emitterSubscription.unsubscribe();
+        }
+    }
+
+    emitterListener() {
+        this.emitterSubscription = this._lesson.emitter.subscribe(() => {
+            this.requests = [];
+            this.setAllUserSkills();
+        });
     }
 
     setAllUserSkills() {

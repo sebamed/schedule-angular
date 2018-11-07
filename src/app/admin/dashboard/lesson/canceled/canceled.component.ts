@@ -11,6 +11,7 @@ import { IUserInfo } from 'src/app/common/model/user-info.model';
 })
 
 export class CanceledLessonsComponent implements OnInit {
+
     user: IUserInfo;
 
     lessons: ILesson[] = [];

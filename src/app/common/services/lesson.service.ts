@@ -1,21 +1,36 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ILesson } from '../model/lesson.model';
 import { ApiConsts } from '../constants/api.constants';
 import { ILessonConfirm } from '../model/dto/lesson-confirm.dto';
 import { IUserLesson } from '../model/dto/user-lesson.dto';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class LessonService {
 
+    emitter: EventEmitter<any> = new EventEmitter();
+
     constructor(private _http: HttpClient) { }
 
     cancel(userLesson: IUserLesson) {
-        return this._http.post<ILesson>(ApiConsts.LESSON_CANCEL, userLesson);
+        return this._http.post<ILesson>(ApiConsts.LESSON_CANCEL, userLesson)
+            .pipe(
+                map((data: ILesson) => {
+                    this.emitter.emit();
+                    return data;
+                })
+            );
     }
 
     confirm(lesson: ILessonConfirm) {
-        return this._http.post<ILesson>(ApiConsts.LESSON_CONFIRM, lesson);
+        return this._http.post<ILesson>(ApiConsts.LESSON_CONFIRM, lesson)
+            .pipe(
+                map((data: ILesson) => {
+                    this.emitter.emit();
+                    return data;
+                })
+            );
     }
 
     getDoneLessonsByTeachersId(id: number) {
