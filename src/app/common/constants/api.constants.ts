@@ -19,6 +19,8 @@ export class ApiConsts {
     public static LESSON_ENDPOINT = ApiConsts.API + '/lessons';
     public static LESSON_ALL_BY_SKILL_NAME = ApiConsts.LESSON_ENDPOINT + '/skill/'; // + skill name
     public static LESSON_ALL_BY_TEACHER_ID = ApiConsts.LESSON_ENDPOINT + '/confirmed/'; // + teachers id
+    public static LESSON_ALL_DONEBY_TEACHER_ID = ApiConsts.LESSON_ENDPOINT + '/done/'; // + teachers id
+    public static LESSON_ALL_CANCELED_BY_TEACHER_ID = ApiConsts.LESSON_ENDPOINT + '/canceled/'; // + teacher id
     public static LESSON_CONFIRM = ApiConsts.LESSON_ENDPOINT + '/confirm';
     public static LESSON_CANCEL = ApiConsts.LESSON_ENDPOINT + '/cancel';
 }

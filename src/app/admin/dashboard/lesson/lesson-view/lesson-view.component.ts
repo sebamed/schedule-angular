@@ -3,6 +3,7 @@ import { ILesson } from 'src/app/common/model/lesson.model';
 import { NbWindowService } from '@nebular/theme';
 import { ConfirmLessonWindowComponent } from '../windows/confirm/confirm-lesson.component';
 import { LessonInfoWindowComponent } from '../windows/info/lesson-info.component';
+import { LessonDoneWindowComponent } from '../windows/done/lesson-done.component';
 
 @Component({
     selector: 'app-admin-dashboard-lesson-view',
@@ -25,6 +26,18 @@ export class LessonViewComponent implements OnInit {
         this._window.open(LessonInfoWindowComponent,
             {
                 title: 'Info about lesson with ID: ' + this.lesson.id,
+                closeOnBackdropClick: true,
+                closeOnEsc: true,
+                context: {
+                    lesson: this.lesson
+                }
+            });
+    }
+
+    openDoneWindow() {
+        this._window.open(LessonDoneWindowComponent,
+            {
+                title: 'Lesson with ID: ' + this.lesson.id + ' is over',
                 closeOnBackdropClick: true,
                 closeOnEsc: true,
                 context: {

@@ -20,6 +20,11 @@
                 </ul>
                 <button *ngIf="lesson_type === 'warning'" fullWidth nbButton status="{{lesson_type}}" (click)="openConfirmWindow()">Confirm</button>
                 <button *ngIf="lesson_type === 'success'" fullWidth nbButton status="{{lesson_type}}" (click)="openInfoWindow()">Info</button>
+                <ng-container *ngIf="lesson_type === 'danger'">
+                    <br />
+                    <br />
+                </ng-container>
+                <button *ngIf="lesson_type === 'info'" fullWidth nbButton status="{{lesson_type}}" (click)="openDoneWindow()">Info</button>
             </nb-card-body>
         </nb-card>
     </nb-card-back>

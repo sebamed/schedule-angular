@@ -44,7 +44,7 @@ export class DashboardConstants {
                         },
                         {
                             title: 'Canceled',
-                            link: ['/admin/lesson/my-lessons/calnceled']
+                            link: ['/admin/lesson/my-lessons/canceled']
                         }
                     ]
                 }

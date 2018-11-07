@@ -18,6 +18,14 @@ export class LessonService {
         return this._http.post<ILesson>(ApiConsts.LESSON_CONFIRM, lesson);
     }
 
+    getDoneLessonsByTeachersId(id: number) {
+        return this._http.get<ILesson[]>(ApiConsts.LESSON_ALL_DONEBY_TEACHER_ID + id.toString());
+    }
+
+    getCanceledLessonsByTeachersId(id: number) {
+        return this._http.get<ILesson[]>(ApiConsts.LESSON_ALL_CANCELED_BY_TEACHER_ID + id.toString());
+    }
+
     getConfirmedLessonsByTeachersId(id: number) {
         return this._http.get<ILesson[]>(ApiConsts.LESSON_ALL_BY_TEACHER_ID + id.toString());
     }

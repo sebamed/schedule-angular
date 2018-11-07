@@ -1,5 +1,5 @@
 <p>
-    This lesson is confirmed by you. Please make sure you check all data and cancel if needed:
+    This lesson is now over:
 </p>
 <nb-list>
     <nb-list-item>
@@ -42,12 +42,6 @@
         <b>Estimated earnings: </b>{{lesson.price * lesson.students.length}} RSD
     </nb-list-item>
 </nb-list>
-<p>
-    If you are unsatisfied with any of this information, you can cancel this lesson. Notification about lesson
-    cancelation will be sent to all students.
-    <br /><br /><b>Cancel this lesson?</b>
-</p>
 <div class="buttons">
-    <button nbButton status="success" (click)="cancel()">YES</button>
-    <button nbButton status="danger" (click)="close()">NO</button>
+    <button nbButton status="success" (click)="close()">OK</button>
 </div>
