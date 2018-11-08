@@ -2,6 +2,8 @@ export class AppConstants {
 
     // variables
     public static TOAST_EXPIRE = 5; // seconds after toast expires
+    public static CALENDAR_SHOW_DAYS = 7;
+    public static CALENDAR_SHOW_HOURS = 10;
 
     // toasts
     public static TOAST_INSUFFICIENT_PERMISSION = 'Insufficient permission';

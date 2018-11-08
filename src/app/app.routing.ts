@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
-  { path: 'admin', loadChildren: './admin/admin.module#AdminModule' }
+  { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
+  { path: 'user', loadChildren: './user/user.module#UserModule' }
 ];
 
 const config: ExtraOptions = {

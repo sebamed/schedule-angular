@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="subjects" [nbSpinner]="data_loading" nbSpinnerStatus="success" nbSpinnerSize="xlarge">
+            <app-admin-dashboard-lesson-no-content *ngIf="subjects.length === 0" [message]="'No subjects right now!'"></app-admin-dashboard-lesson-no-content>
+            <div class="subj-container">
+                <div class="subject" *ngFor="let subject of subjects">
+                    {{subject.name}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="times">
+        <div class="time" *ngFor="let time of calendar[0].times">
+            {{time.hours + ':' + time.minutes + '0'}}
+        </div>
+    </div>
+    <div class="calendar">
+        <div class="column" *ngFor="let column of calendar">
+            <div *ngFor="let cell of column.times; let i = index;">
+                <p *ngIf="i === 0">
+                    {{column.date | date: 'EEE dd/MM'}}
+                </p>
+                <div class="cell">
+                    <div class="date">
+                        {{column.date | date: 'dd/MM'}}
+                    </div>
+                    <div class="time">
+                        {{cell.hours + ':' + cell.minutes + '0'}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

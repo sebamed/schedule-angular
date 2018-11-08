@@ -21,7 +21,7 @@ export class UserService {
     }
 
     getUserSkills(id: number) {
-        return this._http.get<ISubject[]>(ApiConsts.USER_ENDPOINT + id.toString() + '/skills');
+        return this._http.get<ISubject[]>(ApiConsts.USER_ENDPOINT + '/' + id.toString() + '/skills');
     }
 
     updateUserSkills(id: number, skills: ISubject[]) {

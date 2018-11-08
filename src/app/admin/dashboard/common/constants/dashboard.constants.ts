@@ -79,42 +79,6 @@ export class DashboardConstants {
                     link: ['/admin/role/users']
                 }
             ],
-        }, {
-            title: 'Users',
-            expanded: false,
-            icon: 'nb-person',
-            children: [
-                {
-                    title: 'Change Password',
-                    link: [],
-                },
-                {
-                    title: 'Privacy Policy',
-                    ulr: '#',
-                },
-                {
-                    title: 'Logout',
-                    link: []
-                },
-            ],
-        }, {
-            title: 'Users',
-            expanded: false,
-            icon: 'nb-person',
-            children: [
-                {
-                    title: 'Change Password',
-                    link: []
-                },
-                {
-                    title: 'Privacy Policy',
-                    ulr: '#'
-                },
-                {
-                    title: 'Logout',
-                    link: [],
-                },
-            ],
         }
     ];
 
