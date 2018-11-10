@@ -2,32 +2,48 @@
     <div class="col-md-12">
         <div class="subjects" [nbSpinner]="data_loading" nbSpinnerStatus="success" nbSpinnerSize="xlarge">
             <app-admin-dashboard-lesson-no-content *ngIf="subjects.length === 0" [message]="'No subjects right now!'"></app-admin-dashboard-lesson-no-content>
-            <div class="subj-container">
-                <div class="subject" *ngFor="let subject of subjects">
+            <div class="subj-container" cdkDropListOrientation="horizontal" cdkDropList #subjectList="cdkDropList"
+                [cdkDropListData]="subjects" [cdkDropListConnectedTo]="[lessonList]" (cdkDropListDropped)="drop($event)">
+                <div class="subject" *ngFor="let subject of subjects" cdkDrag>
                     {{subject.name}}
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <div class="content">
-    <div class="times">
-        <div class="time" *ngFor="let time of calendar[0].times">
-            {{time.hours + ':' + time.minutes + '0'}}
+    <div class="times" *ngIf="calendar.length > 0">
+        <div class="time" *ngFor="let appointment of calendar[0].appointments">
+            {{appointment.time.hours + ':' + appointment.time.minutes + '0'}}
         </div>
     </div>
     <div class="calendar">
-        <div class="column" *ngFor="let column of calendar">
-            <div *ngFor="let cell of column.times; let i = index;">
+        <div class="column" *ngFor="let day of calendar">
+            <div *ngFor="let appointment of day.appointments; let i = index;">
                 <p *ngIf="i === 0">
-                    {{column.date | date: 'EEE dd/MM'}}
+                    {{day.date | date: 'EEE dd/MM'}}
                 </p>
                 <div class="cell">
+                    <div cdkDropList
+                    #lessonList="cdkDropList"
+                    [cdkDropListData]="appointment.lessons"
+                    [cdkDropListConnectedTo]="[subjectList]"
+                    (cdkDropListDropped)="drop($event)">
+                        <div class="lessons" cdkDrag *ngFor="let lesson of appointment.lessons">
+                            <div class="lesson" 
+                            [class.canceled]="lesson.canceled === true && lesson.confirmed === true"
+                            [class.requested]="lesson.confirmed === false && lesson.canceled === false"
+                            [class.approved]="lesson.confirmed === true && lesson.canceled === false">
+                                {{lesson.course.subject.name}}
+                            </div>
+                        </div>
+                    </div>
                     <div class="date">
-                        {{column.date | date: 'dd/MM'}}
+                        {{day.date | date: 'dd/MM'}}
                     </div>
                     <div class="time">
-                        {{cell.hours + ':' + cell.minutes + '0'}}
+                        {{appointment.time.hours + ':' + appointment.time.minutes + '0'}}
                     </div>
                 </div>
             </div>

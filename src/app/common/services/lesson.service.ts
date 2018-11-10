@@ -49,4 +49,8 @@ export class LessonService {
         return this._http.get<ILesson[]>(ApiConsts.LESSON_ALL_BY_SKILL_NAME + name);
     }
 
+    getAll() {
+        return this._http.get<ILesson[]>(ApiConsts.LESSON_ENDPOINT);
+    }
+
 }
