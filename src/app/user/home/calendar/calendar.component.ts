@@ -21,20 +21,7 @@ import { formatDate, DatePipe } from '@angular/common';
 
 export class CalendarComponent implements OnInit {
 
-    todo = [
-        'Get to work',
-        'Pick up groceries',
-        'Go home',
-        'Fall asleep'
-    ];
-
-    done = [
-        'Get up',
-        'Brush teeth',
-        'Take a shower',
-        'Check e-mail',
-        'Walk dog'
-    ];
+    LIST_IDS: any[] = [];
 
     subjects: ISubject[] = [];
     transfered: ISubject[] = [];
@@ -75,16 +62,22 @@ export class CalendarComponent implements OnInit {
         });
     }
 
-    drop(event: CdkDragDrop<ISubject[]>) {
+    addId(i, j) {
+        this.LIST_IDS.push('cdk-drop-list-' + i + '' + j);
+        return i + '' + j;
+    }
+
+    drop(event: CdkDragDrop<any[]>, a, b) {
         console.log(event);
-        if (event.previousContainer === event.container) {
-            moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-        } else {
-            transferArrayItem(event.previousContainer.data,
-                event.container.data,
-                event.previousIndex,
-                event.currentIndex);
-        }
+        console.log(a)
+        console.log(b)
+        // if (event.previousContainer !== event.container) {
+        //     let lesson = null as ILes
+        //     transferArrayItem(event.previousContainer.data,
+        //         event.container.data,
+        //         event.previousIndex,
+        //         event.currentIndex);
+        // }
     }
 
     // todo: refaktorisi kad skontas drag n drop
@@ -111,7 +104,7 @@ export class CalendarComponent implements OnInit {
         // dodaje lessone u kalendar po datumu i vremenu
         this.calendar.forEach(cal => {
             this.lessons.forEach(lesson => {
-                if (lesson.date.toString() === this._date.transform(cal.date, 'yyyy-MM-dd')) {
+                if (lesson.date.toString() === this.transformDate(cal.date, 'yyyy-MM-dd')) {
                     cal.appointments.forEach(appointment => {
                         if (lesson.time.toString().split(':')[0] ===
                             (appointment.time.hours.toString())) {
@@ -122,4 +115,9 @@ export class CalendarComponent implements OnInit {
             });
         });
     }
+
+    transformDate(date: Date, format: string) {
+        return this._date.transform(date, format);
+    }
+
 }

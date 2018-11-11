@@ -3,7 +3,7 @@
         <div class="subjects" [nbSpinner]="data_loading" nbSpinnerStatus="success" nbSpinnerSize="xlarge">
             <app-admin-dashboard-lesson-no-content *ngIf="subjects.length === 0" [message]="'No subjects right now!'"></app-admin-dashboard-lesson-no-content>
             <div class="subj-container" cdkDropListOrientation="horizontal" cdkDropList #subjectList="cdkDropList"
-                [cdkDropListData]="subjects" [cdkDropListConnectedTo]="[lessonList]" (cdkDropListDropped)="drop($event)">
+                [cdkDropListData]="subjects" [cdkDropListConnectedTo]="LIST_IDS">
                 <div class="subject" *ngFor="let subject of subjects" cdkDrag>
                     {{subject.name}}
                 </div>
@@ -19,17 +19,17 @@
         </div>
     </div>
     <div class="calendar">
-        <div class="column" *ngFor="let day of calendar">
+        <div class="column" *ngFor="let day of calendar; let j = index;">
             <div *ngFor="let appointment of day.appointments; let i = index;">
                 <p *ngIf="i === 0">
                     {{day.date | date: 'EEE dd/MM'}}
                 </p>
-                <div class="cell">
+                <div class="cell" [class.has-lessons]="appointment.lessons.length > 0">
                     <div cdkDropList
-                    #lessonList="cdkDropList"
+                    [attr.id]="addId(i, j)"
                     [cdkDropListData]="appointment.lessons"
                     [cdkDropListConnectedTo]="[subjectList]"
-                    (cdkDropListDropped)="drop($event)">
+                    (cdkDropListDropped)="drop($event, transformDate(day.date, 'yyyy-MM-dd'), appointment.time)">
                         <div class="lessons" cdkDrag *ngFor="let lesson of appointment.lessons">
                             <div class="lesson" 
                             [class.canceled]="lesson.canceled === true && lesson.confirmed === true"
