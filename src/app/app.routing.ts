@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { ToastComponent } from './common/components/toast/toast.component';
 import { AppComponent } from './app.component';
+import { NoContentComponent } from './admin/dashboard/lesson/common/component/no-content/no-content.component';
 
 const routes: Routes = [
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },

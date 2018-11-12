@@ -1,0 +1,33 @@
+#minutes {
+    width: 80px;
+    text-align: center;
+}
+
+.ready {
+    border-right: 1px solid #F2F4F7;
+    button {
+        width: 100%;
+        font-size: 15px;
+        cursor: pointer;
+        padding: 10px;
+        margin: 5px;
+        i {
+            float: right;
+            margin-right: 20px;
+            vertical-align: middle;
+            &:hover {
+                color: rgba(255, 255, 255, .3);
+            }
+        }
+    }
+}
+
+.choose {
+    button {
+        width: 100%;
+        font-size: 15px;
+        cursor: pointer;
+        padding: 10px;
+        margin: 5px;
+    }
+}

@@ -23,4 +23,6 @@ export class ApiConsts {
     public static LESSON_ALL_CANCELED_BY_TEACHER_ID = ApiConsts.LESSON_ENDPOINT + '/canceled/'; // + teacher id
     public static LESSON_CONFIRM = ApiConsts.LESSON_ENDPOINT + '/confirm';
     public static LESSON_CANCEL = ApiConsts.LESSON_ENDPOINT + '/cancel';
+    public static LESSON_JOIN = ApiConsts.API + '/lessons/join';
+    public static LESSON_LEAVE = ApiConsts.API + '/lessons/leave';
 }

@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { UserRoutingModule, userComponents } from './user.routing';
+import { UserRoutingModule, userComponents, userEntryComponents } from './user.routing';
 import { UserNebularModule } from './user.nebular.module';
 import { CommonModule } from '@angular/common';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NbWindowService } from '@nebular/theme';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -16,6 +18,11 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
         ...userComponents
     ],
     exports: [],
-    providers: [],
+    providers: [
+        NbWindowService
+    ],
+    entryComponents: [
+        ...userEntryComponents
+    ]
 })
 export class UserModule { }

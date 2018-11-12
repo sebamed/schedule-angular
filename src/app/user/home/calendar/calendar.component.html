@@ -1,10 +1,9 @@
 <div class="row">
     <div class="col-md-12">
         <div class="subjects" [nbSpinner]="data_loading" nbSpinnerStatus="success" nbSpinnerSize="xlarge">
-            <app-admin-dashboard-lesson-no-content *ngIf="subjects.length === 0" [message]="'No subjects right now!'"></app-admin-dashboard-lesson-no-content>
-            <div class="subj-container" cdkDropListOrientation="horizontal" cdkDropList #subjectList="cdkDropList"
+            <div class="subj-container"  cdkDropListOrientation="horizontal" cdkDropList #subjectList="cdkDropList"
                 [cdkDropListData]="subjects" [cdkDropListConnectedTo]="LIST_IDS">
-                <div class="subject" *ngFor="let subject of subjects" cdkDrag>
+                <div class="subject" disabled *ngFor="let subject of subjects" cdkDrag>
                     {{subject.name}}
                 </div>
             </div>
@@ -25,22 +24,27 @@
                     {{day.date | date: 'EEE dd/MM'}}
                 </p>
                 <div class="cell" [class.has-lessons]="appointment.lessons.length > 0">
-                    <div cdkDropList
+                    <div cdkDropList class="drop-list"
                     [attr.id]="addId(i, j)"
+                    [cdkDropListConnectedTo]="LIST_IDS"
                     [cdkDropListData]="appointment.lessons"
-                    [cdkDropListConnectedTo]="[subjectList]"
-                    (cdkDropListDropped)="drop($event, transformDate(day.date, 'yyyy-MM-dd'), appointment.time)">
-                        <div class="lessons" cdkDrag *ngFor="let lesson of appointment.lessons">
-                            <div class="lesson" 
+                    (cdkDropListDropped)="drop($event, appointment, transformDate(day.date, 'yyyy-MM-dd'), transformTime(appointment.time))">
+                        <div class="lessons" *ngFor="let lesson of appointment.lessons">
+                            <div class="lesson" *ngIf="lesson.new === undefined"
                             [class.canceled]="lesson.canceled === true && lesson.confirmed === true"
                             [class.requested]="lesson.confirmed === false && lesson.canceled === false"
                             [class.approved]="lesson.confirmed === true && lesson.canceled === false">
                                 {{lesson.course.subject.name}}
+                                <i class="ion-md-help" (click)="openInfoWindow(appointment, lesson)"></i>
+                            </div>
+                            <div class="lesson new" *ngIf="lesson.new === true">
+                                {{lesson.course.subject.name}}
+                                <!-- <i nbTooltip="Request" nbTooltipPlacement="top" class="remove ion-md-trash"></i>
+                                <i nbTooltip="Remove" nbTooltipPlacement="top" class="request ion-md-checkmark"></i> -->
+                                <i class="remove ion-md-trash" (click)="remove(appointment, lesson)"></i>
+                                <i class="request ion-md-checkmark" (click)="openRequestWindow(appointment, lesson)"></i>
                             </div>
                         </div>
-                    </div>
-                    <div class="date">
-                        {{day.date | date: 'dd/MM'}}
                     </div>
                     <div class="time">
                         {{appointment.time.hours + ':' + appointment.time.minutes + '0'}}

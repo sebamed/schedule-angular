@@ -3,7 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user.component';
 import { HomeComponent } from './home/home.component';
 import { CalendarComponent } from './home/calendar/calendar.component';
-import { NoContentComponent } from '../admin/dashboard/lesson/common/component/no-content/no-content.component';
+import { NbTooltipDirective, NbTooltipModule } from '@nebular/theme';
+import { RequestLessonWindowComponent } from './home/calendar/windows/request/request.component';
+import { LessonInfoWindowComponent } from './home/calendar/windows/info/info.component';
 
 const routes: Routes = [
     {
@@ -20,8 +22,14 @@ const routes: Routes = [
 export class UserRoutingModule { }
 
 export const userComponents = [
-    NoContentComponent,
     UserComponent,
     HomeComponent,
-    CalendarComponent
+    CalendarComponent,
+    RequestLessonWindowComponent,
+    LessonInfoWindowComponent
+];
+
+export const userEntryComponents = [
+    RequestLessonWindowComponent,
+    LessonInfoWindowComponent
 ];

@@ -1,0 +1,114 @@
+<ng-container *ngIf="lesson !== undefined">
+    <ng-container *ngIf="lesson.confirmed && lesson.canceled === false">
+        <button nbButton status="success" class="header-btn">CONFIRMED</button>
+        <p>This lesson has been confirmed!
+            <ng-container *ngIf="userJoinedLesson">
+                <br />
+                You already joined this lesson. You can leave it by pressing the button down below!
+            </ng-container>
+            <ng-container *ngIf="!userJoinedLesson">
+                <br />
+                You can join it by pressing the button down below!
+            </ng-container>
+        </p>
+        <nb-list>
+            <nb-list-item>
+                <b>Date and time:</b> {{lesson.date | date: 'EEEE, MMMM d'}} at {{lesson.time | slice:0:5}}
+            </nb-list-item>
+            <nb-list-item>
+                <b>Teacher:</b> {{lesson.teacher.firstName + ' ' + lesson.teacher.lastName}}
+            </nb-list-item>
+            <nb-list-item>
+                <b>Subject:</b> {{lesson.course.subject.name}}
+            </nb-list-item>
+            <nb-list-item>
+                <b>Material: </b><span *ngFor="let mat of lesson.course.material">{{mat}} | </span>
+            </nb-list-item>
+            <nb-list-item>
+                <b>Types: </b><span *ngFor="let type of lesson.course.types">{{type}} | </span>
+            </nb-list-item>
+            <nb-list-item>
+                <b>Duration: </b>{{lesson.length}} minutes
+            </nb-list-item>
+            <nb-list-item>
+                <b>Price: </b>{{lesson.price}} RSD
+            </nb-list-item>
+            <nb-list-item>
+                <nb-accordion>
+                    <nb-accordion-item>
+                        <nb-accordion-item-header>
+                            Students ({{lesson.students.length}})
+                        </nb-accordion-item-header>
+                        <nb-accordion-item-body>
+                            <b *ngFor="let student of lesson.students">
+                                <ng-container *ngIf="student.firstName === user.firstName && student.lastName === user.lastName">
+                                    (YOU)
+                                </ng-container>
+                                <ng-container *ngIf="student.firstName !== user.firstName || student.lastName !== user.lastName">
+                                    ({{student.firstName + ' ' + student.lastName}})
+                                </ng-container>
+                            </b>
+                        </nb-accordion-item-body>
+                    </nb-accordion-item>
+                </nb-accordion>
+            </nb-list-item>
+            <nb-list-item>
+                <b>Price: </b>{{lesson.price}} RSD
+            </nb-list-item>
+        </nb-list>
+    </ng-container>
+    <ng-container *ngIf="lesson.canceled === true">
+        <button nbButton status="danger" class="header-btn">CANCELED</button>
+        <p>This lesson has been canceled!</p>
+        <nb-list class="disabled">
+            <nb-list-item>
+                <b>Date and time:</b> {{lesson.date | date: 'EEEE, MMMM d'}} at {{lesson.time | slice:0:5}}
+            </nb-list-item>
+            <nb-list-item>
+                <b>Teacher:</b> {{lesson.teacher.firstName + ' ' + lesson.teacher.lastName}}
+            </nb-list-item>
+            <nb-list-item>
+                <b>Subject:</b> {{lesson.course.subject.name}}
+            </nb-list-item>
+            <nb-list-item>
+                <b>Material: </b><span *ngFor="let mat of lesson.course.material">{{mat}} | </span>
+            </nb-list-item>
+            <nb-list-item>
+                <b>Types: </b><span *ngFor="let type of lesson.course.types">{{type}} | </span>
+            </nb-list-item>
+            <nb-list-item>
+                <b>Duration: </b>{{lesson.length}} minutes
+            </nb-list-item>
+            <nb-list-item>
+                <b>Price: </b>{{lesson.price}} RSD
+            </nb-list-item>
+            <nb-list-item>
+                <nb-accordion>
+                    <nb-accordion-item disabled>
+                        <nb-accordion-item-header>
+                            Students ({{lesson.students.length}})
+                        </nb-accordion-item-header>
+                        <nb-accordion-item-body>
+                            <b *ngFor="let student of lesson.students">
+                                <ng-container *ngIf="student.firstName === user.firstName && student.lastName === user.lastName">
+                                    (YOU)
+                                </ng-container>
+                                <ng-container *ngIf="student.firstName !== user.firstName || student.lastName !== user.lastName">
+                                    ({{student.firstName + ' ' + student.lastName}})
+                                </ng-container>
+                            </b>
+                        </nb-accordion-item-body>
+                    </nb-accordion-item>
+                </nb-accordion>
+            </nb-list-item>
+            <nb-list-item>
+                <b>Price: </b>{{lesson.price}} RSD
+            </nb-list-item>
+        </nb-list>
+    </ng-container>
+    <div class="buttons">
+        <button nbButton status="success" (click)="join()" *ngIf="!userJoinedLesson && lesson.canceled === false" (click)="join()">JOIN</button>
+        <button nbButton status="warning" (click)="join()" *ngIf="userJoinedLesson && lesson.canceled === false" (click)="leave()">LEAVE</button>
+        <button nbButton status="danger" (click)="close()">CLOSE</button>
+    </div>
+</ng-container>

@@ -9,6 +9,9 @@ export class AppConstants {
     public static TOAST_INSUFFICIENT_PERMISSION = 'Insufficient permission';
     public static TOAST_LIST_EMPTY = 'No data in list';
     public static TOAST_SUCCESSFULLY_UPDATED = 'Successfully updated';
+    public static TOAST_SUCCESSFULLY_JOINED = 'Successfully joined';
+    public static TOAST_SUCCESSFULLY_LEFT = 'Successfully left';
+    public static TOAST_SUCCESSFULLY_REQUESTED = 'Successfully requested';
     public static TOAST_SUCCESSFULLY_CONFIRMED = 'Successfully confirmed';
     public static TOAST_SUCCESSFULLY_CREATED = 'Successfully created';
     public static TOAST_SUCCESSFULLY_CANCELED = 'Successfully canceled';
@@ -25,4 +28,15 @@ export class AppConstants {
     public static ICON_ROLE = 'nb-flame-circled';
     public static ICON_SUBJECT = 'nb-edit';
     public static ICON_LESSON = 'nb-compose';
+
+    public static LESSON_TYPES = [
+        'Teorija',
+        'Zadaci'
+    ];
+
+    public static LESSON_MATERIAL = [
+        'Kolokvijum 1',
+        'Kolokvijum 2',
+        'Ispit'
+    ];
 }

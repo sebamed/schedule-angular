@@ -1,16 +1,25 @@
 .cdk-drag-preview {
     box-sizing: border-box;
-    text-align: center;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    line-height: 55px;
-    font-size: 14px;
+    text-align: left;
+    background-color: #65B2FF;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px;
+    line-height: 15px;
     border-radius: 5px;
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 .cdk-drag-placeholder {
-    opacity: 0;
+    opacity: .5;
+    padding: 5px;
+    margin: 5px;
+    flex: 1;
+    text-align: left;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #65B2FF;
+    font-size: 12px;
 }
 
 .cdk-drag-animating {
@@ -33,16 +42,17 @@
         flex-direction: row;
         align-items: stretch;
         .subject {
-            padding: 20px 20px;
+            padding: 5px;
+            margin: 5px;
             flex: 1;
+            text-align: left;
             border-radius: 5px;
-            border: 1px solid #ccc;
-            color: rgba(0, 0, 0, 0.87);
-            background: #fff;
-            font-size: 14px;
+            color: #fff;
+            background-color: #65B2FF;
+            font-size: 12px;
             cursor: move;
             &:hover {
-                background-color: #f1f1f1;
+                background-color: rgba(101, 178, 255, .8);
             }
         }
     }
@@ -86,6 +96,9 @@
                 background-color: #f9f9f9;
                 max-height: 100%;
                 position: relative;
+                .drop-list {
+                    height: 100%;
+                }
                 .time,
                 .date {
                     position: absolute;
@@ -97,20 +110,42 @@
                 }
                 .time {
                     bottom: 10px;
+                    font-size: 34px;
+                    font-weight: 700;
+                    color: #e1e1e1;
                 }
                 &:hover {
                     background-color: #f2f2f2;
                 }
+                overflow-y: auto;
                 .lessons {
                     .lesson {
                         cursor: pointer;
                         border: 1px solid;
                         border-radius: 5px;
-                        width: 70%;
+                        width: 100%;
                         font-size: 11px;
                         padding: 5px;
-                        color: #fff
-                    } // todo: promeni boje
+                        color: #fff;
+                        position: relative;
+                        z-index: 999;
+                    }
+                    .canceled,
+                    .requested,
+                    .approved,
+                    .new {
+                        i {
+                            float: right;
+                            margin: 0 5px;
+                            border-radius: 40%;
+                            padding: 0 5px;
+                            cursor: pointer;
+                            vertical-align: middle;
+                            &:hover {
+                                background-color: rgba(255, 255, 255, .3);
+                            }
+                        }
+                    }
                     .canceled {
                         background-color: #FF657F;
                     }
@@ -119,6 +154,10 @@
                     }
                     .approved {
                         background-color: #40dc7e;
+                    }
+                    .new {
+                        background-color: #65B2FF;
+                        cursor: initial;
                     }
                 }
             }

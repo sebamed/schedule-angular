@@ -21,7 +21,7 @@ export class TeachersBySubjectComponent implements OnInit {
 
     tables: any[] = [];
 
-    subjects: IRole[] = [];
+    subjects: ISubject[] = [];
 
     constructor(private _subject: SubjectService, private _toast: ToastService, private _user: UserService) { }
 

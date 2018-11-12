@@ -1,0 +1,54 @@
+<p>
+    You are about to request a new lesson. Please check these details and choose additional information:
+</p>
+<nb-list>
+    <nb-list-item>
+        Date: <b>{{lesson.date}}</b>
+    </nb-list-item>
+    <nb-list-item>
+        Time: <b>{{lesson.time | slice:0:3}} <input id="minutes" min="0" max="60" type="number" nbInput value="00"></b>
+    </nb-list-item>
+    <nb-list-item>
+        Subject: <b> {{lesson.course.subject.name}} </b>
+    </nb-list-item>
+    <nb-list-item>
+        <div class="row">
+            <div class="col-md-8 ready">
+                Types:
+                <button nbButton hero status="success" *ngFor="let type of lesson.course.types">{{type}}
+                    <i class="ion-md-trash" (click)="removeType(type)"></i>
+                </button>
+            </div>
+            <div class="col-md-4 choose">
+                <button nbButton hero status="primary" (click)="addType(item)" *ngFor="let item of lesson_types">
+                    {{item}}
+                </button>
+            </div>
+        </div>
+    </nb-list-item>
+    <nb-list-item>
+        <div class="row">
+            <div class="col-md-8 ready">
+                Material:
+                <button nbButton hero status="success" *ngFor="let mat of lesson.course.material">{{mat}}
+                    <i class="ion-md-trash" (click)="removeMaterial(mat)"></i>
+                </button>
+            </div>
+            <div class="col-md-4 choose">
+                <button nbButton hero status="primary" (click)="addMaterial(mat)" *ngFor="let mat of lesson_material">
+                    {{mat}}
+                </button>
+            </div>
+        </div>
+    </nb-list-item>
+</nb-list>
+<p>
+    Please check your info again! After requesting this lesson, teacher will review you request and approve or deny
+    your request. You will recieve an email with further information.
+    <br />
+    <b>Are you sure you want to request this lesson?</b>
+</p>
+<div class="buttons">
+    <button nbButton status="success" (click)="request()">YES</button>
+    <button nbButton status="danger" (click)="close()">NO</button>
+</div>
