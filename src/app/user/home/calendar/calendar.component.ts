@@ -40,8 +40,6 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
     data_loading: Boolean = true;
 
-    // calendar: ICalendarCell[] = [];
-
     calendar: ICalendarDay[] = [];
 
     lessons: ICalendarDayLesson[] = [];
@@ -123,7 +121,6 @@ export class CalendarComponent implements OnInit, OnDestroy {
         appointment.lessons.push(this.requestedLesson);
     }
 
-    // todo: refaktorisi kad skontas drag n drop
     setCalendar(lessons: ICalendarDayLesson[]) {
         for (let i = 0; i < AppConstants.CALENDAR_SHOW_DAYS; i++) {
             const date = new Date();
@@ -144,7 +141,6 @@ export class CalendarComponent implements OnInit, OnDestroy {
             });
         }
 
-        // dodaje lessone u kalendar po datumu i vremenu
         this.calendar.forEach(cal => {
             this.lessons.forEach(lesson => {
                 if (lesson.date.toString() === this.transformDate(cal.date, 'yyyy-MM-dd')) {
