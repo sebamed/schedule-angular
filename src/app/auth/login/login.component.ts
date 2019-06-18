@@ -5,6 +5,7 @@ import { ILoginDTO } from '../common/model/login-dto.model';
 import { AuthService } from 'src/app/common/services/auth.service';
 import { ILoginResponse } from '../common/model/login-response.model';
 import { IErrorResponse } from 'src/app/common/model/error-response.model';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-auth-login',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
     loginDTO: ILoginDTO;
 
-    constructor(private _toast: ToastService, private formBuilder: FormBuilder, private _auth: AuthService) {
+    constructor(private _router: Router, private _toast: ToastService, private formBuilder: FormBuilder, private _auth: AuthService) {
 
     }
 
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit {
             return;
         } else {
             this.login();
+
         }
     }
 
@@ -56,6 +58,13 @@ export class LoginComponent implements OnInit {
 
         this._auth.login(this.loginDTO).subscribe((res: ILoginResponse) => {
             console.log(res);
+            if(res.user.role.id === 2) {
+                // goto user
+                this._router.navigateByUrl('/user/home')
+            } else {
+                // goto admin
+                this._router.navigateByUrl('/admin')
+            }
         }, (error: IErrorResponse) => {
             console.log(error);
             this._toast.addErrorToast(error.errorMessage);

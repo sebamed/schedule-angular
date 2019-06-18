@@ -25,7 +25,7 @@ export class UserService {
     }
 
     updateUserSkills(id: number, skills: ISubject[]) {
-        return this._http.post<ISubject[]>(ApiConsts.USER_ENDPOINT + id.toString() + '/skills', skills)
+        return this._http.post<ISubject[]>(ApiConsts.USER_ENDPOINT + '/'+ id.toString() + '/skills', skills)
             .pipe(
                 map((data: ISubject[]) => {
                     const user = <IUserInfo>JSON.parse(localStorage.getItem('user'));

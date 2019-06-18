@@ -53,6 +53,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        console.log('da')
         this.setAllLessons();
         this.setSubjects();
         this.setUser();
@@ -122,6 +123,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
     }
 
     setCalendar(lessons: ICalendarDayLesson[]) {
+        console.log(lessons)
         for (let i = 0; i < AppConstants.CALENDAR_SHOW_DAYS; i++) {
             const date = new Date();
             date.setDate(date.getDate() + i);
@@ -153,6 +155,9 @@ export class CalendarComponent implements OnInit, OnDestroy {
                 }
             });
         });
+
+        console.log(this.calendar)
+
     }
 
     transformDate(date: Date, format: string) {
@@ -174,6 +179,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
     }
 
     openRequestWindow(appointment: ICalendarAppointment, lesson: ICalendarDayLesson) {
+        console.log(this.user)
         this._window.open(RequestLessonWindowComponent,
             {
                 title: 'Request new lesson on ' + lesson.date,
@@ -181,7 +187,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
                 closeOnEsc: true,
                 context: {
                     lesson: {
-                        userId: this.user.id,
+                        userID: this.user.id,
                         date: lesson.date,
                         time: lesson.time,
                         course: {
